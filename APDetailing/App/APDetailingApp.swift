@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct APDetailingApp: App {
+    
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
