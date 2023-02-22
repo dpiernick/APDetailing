@@ -1,0 +1,13 @@
+//
+//  Networking.swift
+//  APDetailing
+//
+//  Created by Dave Piernick on 1/30/23.
+//
+
+import Foundation
+
+@MainActor class Networking: NSObject, ObservableObject {
+    static var shared = Networking()
+    @Published var isShowingLoadingIndicator = false
+}

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailPackage: Identifiable, Hashable {
+struct DetailPackage: Codable, Identifiable, Hashable {
     var id: String
     var price: Int
     var exteriorServices: [ExteriorServices]
@@ -22,7 +22,7 @@ struct DetailPackage: Identifiable, Hashable {
     }
 }
 
-enum ExteriorServices: String {
+enum ExteriorServices: String, Codable {
     case foamCannon = "Foam Cannon Wash"
     case waxClearcoat = "Complete Wax & Clear Coat Sealant"
     case wheels = "Wheels Polished"
@@ -35,7 +35,7 @@ enum ExteriorServices: String {
     case clayBar = "Complete Clay Bar"
 }
 
-enum InteriorServices: String {
+enum InteriorServices: String, Codable {
     case glass = "Glass Cleaned"
     case doorJambs = "Door Jambs, Panels & Dash Wiped"
     case vacuum = "Deep Vacuum"
@@ -50,7 +50,6 @@ struct MockDetailPackages {
     
     static var allPackages = [basic, deluxe, platinum, full, extreme, exclusive]
     
-    static var loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     static var basicExterior: [ExteriorServices] = [.foamCannon, .waxClearcoat, .wheels, .tires]
     static var basicInterior: [InteriorServices] = [.glass, .doorJambs, .vacuum]
     static var basic = DetailPackage(id: "IN & OUT", price: 60, exteriorServices: basicExterior, interiorServices: basicInterior)
