@@ -13,7 +13,6 @@ extension Networking {
     static func submitPhoneNumber(_ phone: String) async -> Bool {
         await withCheckedContinuation({ continuation in
             let phoneNumber = "+1" + phone.numbersOnly
-            print(phoneNumber)
             guard phoneNumber.count == 12 else {
                 continuation.resume(returning: false)
                 return

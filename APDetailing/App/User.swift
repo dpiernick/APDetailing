@@ -8,8 +8,8 @@
 import Foundation
 
 @MainActor class User: ObservableObject {
-    var phoneNumber: String? = nil
-    @Published var isLoggedIn: Bool = true
+    @Published var phoneNumber: String? = nil
+    @Published var isLoggedIn: Bool = false
     @Published var appointments: [Appointment]? = nil
     
     static let shared = User()

@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+@MainActor class ContentViewModel: ObservableObject {
+    @Published var selectedTab = 0
+}
+
 struct ContentView: View {
     @ObservedObject var networking = Networking.shared
-    @State var selectedTab = 0
+    @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
         ZStack {
@@ -24,15 +28,19 @@ struct ContentView: View {
                     Spacer()
                 }
                 
-                TabView(selection: $selectedTab) {
+                TabView(selection: $viewModel.selectedTab) {
                     ServicesView()
                         .tabItem { Label("Services", systemImage: "car") }
                         .tag(0)
-                        .onAppear() { self.selectedTab = 0 }
+                        .onAppear() { viewModel.selectedTab = 0 }
                     AppointmentsView()
                         .tabItem { Label("Appointments", systemImage: "calendar") }
                         .tag(1)
-                        .onAppear() { self.selectedTab = 1 }
+                        .onAppear() { viewModel.selectedTab = 1 }
+                    Text("Contact")
+                        .tabItem { Label("Contact", systemImage: "phone") }
+                        .tag(2)
+                        .onAppear() { viewModel.selectedTab = 2 }
                 }
             }
         }

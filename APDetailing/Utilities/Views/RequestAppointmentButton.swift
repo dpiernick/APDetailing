@@ -13,7 +13,7 @@ struct RequestAppointmentButton: View {
     @State var showingMessageUI = false
     
     var body: some View {
-        if user.isLoggedIn {
+//        if User.shared.isLoggedIn {
             RoundedButton(title: "Request Appointment") {
                 showingRequestAppt = true
             }
@@ -23,20 +23,20 @@ struct RequestAppointmentButton: View {
                     showingRequestAppt = false
                 }
             }
-        } else {
-            HStack {
-                RoundedButton(title: "Call", type: .secondary) {
-                    CallHelper.call("3134028121")
-                }
-                RoundedButton(title: "Text", type: .secondary) {
-                    showingMessageUI = true
-                }
-            }
-            .padding(.bottom)
-            .sheet(isPresented: $showingMessageUI) {
-                MessageUIView(recipient: "3134028121") { _ in }
-            }
-        }
+//        } else {
+//            HStack {
+//                RoundedButton(title: "Call", type: .secondary) {
+//                    CallHelper.call("3134028121")
+//                }
+//                RoundedButton(title: "Text", type: .secondary) {
+//                    showingMessageUI = true
+//                }
+//            }
+//            .padding(.bottom)
+//            .sheet(isPresented: $showingMessageUI) {
+//                MessageUIView(recipient: "3134028121") { _ in }
+//            }
+//        }
     }
 }
 

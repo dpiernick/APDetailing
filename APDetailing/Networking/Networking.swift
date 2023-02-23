@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 @MainActor class Networking: NSObject, ObservableObject {
     static var shared = Networking()

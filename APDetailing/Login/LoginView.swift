@@ -9,15 +9,14 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
-    @StateObject private var viewModel: ViewModel
-    
-    init() {
-        _viewModel = StateObject(wrappedValue: ViewModel())
+    @StateObject private var viewModel: LoginViewModel
+    init(phone: String? = nil, completion: ((LoginResult) -> Void)? = nil) {
+        _viewModel = StateObject(wrappedValue: LoginViewModel(phone: phone, completion: completion))
     }
     
     var body: some View {
         ZStack {
-            Spacer()
+            Color.black.opacity(0.9)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
