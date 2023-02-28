@@ -9,8 +9,12 @@ import Foundation
 
 @MainActor class DetailMenu: ObservableObject {
     static let shared = DetailMenu()
-    private init() {}
     @Published var menu: DetailMenuObject?
+    @Published var showingLaunchScreen = false
+    
+    private init() {
+        Task { await Networking.fetchMenu() }
+    }
     
     var detailPackages: [DetailPackage]? {
         return menu?.detailPackages

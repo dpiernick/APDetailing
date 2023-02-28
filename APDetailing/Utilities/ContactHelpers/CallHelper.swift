@@ -17,5 +17,5 @@ struct CallHelper {
         }
     }
     
-    static var adamWorkPhone = "13137017077"
+    static var primaryPhone = (UserDefaults.standard.string(forKey: "primaryPhone") ?? "3137017077").formatPhoneNumber()
 }

@@ -20,7 +20,7 @@ enum AppointmentError: Error {
 @MainActor class RequestUpdateApptViewModel: NSObject, ObservableObject {
     var id: String = ""
     @Published var name: String = ""
-    @Published var phone: String = ""
+    @Published var phone: String = User.shared.userID?.formatPhoneNumber() ?? ""
     @Published var package: DetailPackage = .fullDetailPackage
     @Published var date: Date = Date() + .day
     @Published var timeOfDay: TimeOfDay?

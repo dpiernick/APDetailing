@@ -26,7 +26,7 @@ import Foundation
         if User.shared.isAdmin {
             CallHelper.call(appt.phone)
         } else {
-            CallHelper.call(User.shared.adminIDs.first ?? CallHelper.adamWorkPhone)
+            CallHelper.call(CallHelper.primaryPhone)
         }
     }
     
@@ -34,7 +34,7 @@ import Foundation
         if User.shared.isAdmin {
             return appt.phone
         } else {
-            return User.shared.adminIDs.first ?? CallHelper.adamWorkPhone
+            return CallHelper.primaryPhone
         }
     }
     

@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 struct Appointment: Codable, Identifiable, Hashable {
-    var id: String? = ""
-    var userID: String? = ""
-    var name: String? = ""
-    var phone: String? = ""
-    var date: Date? = Date()
-    var timeOfDay: String? = ""
-    var location: String? = ""
-    var carDescription: String? = ""
-    var package: DetailPackage? = nil
-    var status: AppointmentStatus? = .requested
+    var id: String?
+    var userID: String?
+    var name: String?
+    var phone: String?
+    var date: Date?
+    var timeOfDay: String?
+    var location: String?
+    var carDescription: String?
+    var package: DetailPackage?
+    var status: AppointmentStatus?
     
     var statusString: String {
         switch status {

@@ -10,6 +10,8 @@ import Firebase
 
 struct LoginView: View {
     @StateObject private var viewModel: LoginViewModel
+    @FocusState private var verifyTextFieldFocused
+    
     init(phone: String? = nil, completion: ((LoginResult) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: LoginViewModel(phone: phone, completion: completion))
     }
@@ -26,8 +28,7 @@ struct LoginView: View {
                     Text("Log in to book on the app!")
                         .font(.system(size: 24))
                         .foregroundColor(.gray)
-                    TextField("Phone", text: $viewModel.phone)
-                        .textFieldStyle(.customTextFieldStyle)
+                    CustomTextField("Phone", text: $viewModel.phone)
                         .keyboardType(.numberPad)
                         .textContentType(.telephoneNumber)
                         .onChange(of: viewModel.phone) { _ in
@@ -40,15 +41,15 @@ struct LoginView: View {
                     Text("Enter your one time code")
                         .font(.system(size: 24))
                         .foregroundColor(.gray)
-                    TextField("", text: $viewModel.code)
-                        .textFieldStyle(.verificationTextFieldStlye)
-                        .keyboardType(.numberPad)
+                    CustomVerifyTextField("", text: $viewModel.code)
                         .onChange(of: viewModel.code) { newValue in
                             viewModel.code = String(newValue.prefix(6))
                             if viewModel.code.count == 6 {
                                 Task { await viewModel.signIn() }
                             }
                         }
+                        .onAppear() { verifyTextFieldFocused = true }
+                        .focused($verifyTextFieldFocused)
                     RoundedButton(title: "Verify", type: .hugger) {
                         await viewModel.signIn()
                     }

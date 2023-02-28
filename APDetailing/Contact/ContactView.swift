@@ -29,7 +29,7 @@ struct ContactView: View {
                     .frame(width: 75, height: 75)
                     .padding(.trailing)
                 Text("@ap_mobile_detailing")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .onTapGesture {
                 openURL(WebHelper.instagramDeepLink) { success in
@@ -44,7 +44,7 @@ struct ContactView: View {
                     .frame(width: 75, height: 75)
                     .padding(.trailing)
                 Text("A.P. Detailing")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .onTapGesture {
                 openURL(WebHelper.facebookWebLink)
@@ -52,14 +52,14 @@ struct ContactView: View {
             
             Spacer()
             
-            Text("By Phone:  (313) 701-7077")
+            Text("By Phone:  \(CallHelper.primaryPhone)")
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .frame(maxWidth: .infinity, alignment: .center)
             HStack(spacing: 20) {
                 RoundedButton(title: "Call", type: .secondary) { viewModel.call() }
                 RoundedButton(title: "Text", type: .secondary) { viewModel.showingMessageUI = true }
                     .sheet(isPresented: $viewModel.showingMessageUI) {
-                        MessageUIView(recipient: User.shared.adminIDs.first ?? CallHelper.adamWorkPhone)
+                        MessageUIView(recipient: CallHelper.primaryPhone)
                     }
             }
             .padding(.bottom)

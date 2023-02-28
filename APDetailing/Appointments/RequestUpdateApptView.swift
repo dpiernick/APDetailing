@@ -19,7 +19,7 @@ struct RequestUpdateApptView: View {
     @StateObject var viewModel: RequestUpdateApptViewModel
     @State var isLocationFocused: Bool = false
     
-    init(appt: Appointment = Appointment(), selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
         _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, menu: menu, isEditing: isEditing, completion: completion))
     }
     
@@ -30,12 +30,10 @@ struct RequestUpdateApptView: View {
                     VStack {
                         VStack {
                             
-                            TextField("Name", text: $viewModel.name)
-                                .textFieldStyle(.customTextFieldStyle)
+                            CustomTextField("Name", text: $viewModel.name)
                                 .padding(.bottom, 4)
                             
-                            TextField("Phone", text: $viewModel.phone)
-                                .textFieldStyle(.customTextFieldStyle)
+                            CustomTextField("Phone", text: $viewModel.phone)
                                 .keyboardType(.numberPad)
                                 .textContentType(.telephoneNumber)
                                 .padding(.bottom, 4)
@@ -46,8 +44,7 @@ struct RequestUpdateApptView: View {
                             DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
                                 .padding(.bottom, 4)
                             
-                            TextField("Car Description", text: $viewModel.carDescription, axis: .vertical)
-                                .textFieldStyle(.customLongFormTextFieldStyle)
+                            CustomLongFormTextField("Car Description", text: $viewModel.carDescription)
                                 .padding(.bottom, 4)
                             
                             LocationSuggestionTextField(viewModel: viewModel, isFocused: isLocationFocused)

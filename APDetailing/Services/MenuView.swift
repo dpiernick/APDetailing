@@ -33,9 +33,6 @@ struct MenuView: View {
                 }
             }
         }
-        .onAppear {
-            Task { await Networking.fetchMenu() }
-        }
     }
 }
 

@@ -39,8 +39,7 @@ struct LocationSuggestionTextField: View {
     }
     
     var body: some View {
-        TextField("Location", text: $viewModel.location)
-            .textFieldStyle(.customTextFieldStyle)
+        CustomTextField("Location", text: $viewModel.location)
             .zIndex(1)
             .alignmentGuide(.top, computeValue: { v in v[.bottom] })
             .focused($isFocused)

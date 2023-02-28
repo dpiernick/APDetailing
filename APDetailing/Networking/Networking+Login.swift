@@ -48,15 +48,16 @@ extension Networking {
         })
         
         await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("AdminIDs").document("AdminIDs").getDocument { document, error in
-                let adminIDsObject = AdminIDs.decode(dictionary: document?.data() ?? [:])
-                User.shared.adminIDs = adminIDsObject?.ids ?? []
+            Firestore.firestore().collection("Admin").document("Admin").getDocument { document, error in
+                let adminIDsObject = Admin.decode(dictionary: document?.data() ?? [:])
+                UserDefaults.standard.set(adminIDsObject?.primaryPhone, forKey: "primaryPhone")
+                UserDefaults.standard.set(adminIDsObject?.adminIDs, forKey: "adminIDs")
                 continuation.resume()
             }
         })
         
         if let phoneNumber = phoneNumber {
-            await User.shared.setIsLoggedIn(true, phoneNumber: phoneNumber)
+            await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)
             let success: Bool = await fetchAppointments()
             shared.isShowingLoadingIndicator = false
             return success

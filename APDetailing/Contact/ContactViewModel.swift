@@ -12,6 +12,6 @@ import Foundation
     @Published var showingRequestAppt = false
     
     func call() {
-        CallHelper.call(User.shared.adminIDs.first ?? CallHelper.adamWorkPhone)
+        CallHelper.call(CallHelper.primaryPhone)
     }
 }

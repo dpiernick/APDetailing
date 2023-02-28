@@ -11,11 +11,15 @@ import Firebase
 extension Networking {
     
     static func fetchAppointments() async -> Bool {
-        await fetchAppointments() != nil
+        if User.shared.isAdmin {
+            return await fetchAllAppointments()
+        } else {
+            return await fetchUserAppointments()
+        }
     }
     
-    static func fetchAppointments() async -> [Appointment]? {
-        guard let userID = User.shared.userID else { return nil }
+    static func fetchUserAppointments() async -> Bool {
+        guard let userID = User.shared.userID else { return false }
         
         shared.isShowingLoadingIndicator = true
         let result: Result<[Appointment], Error> = await withCheckedContinuation({ continuation in
@@ -31,6 +35,7 @@ extension Networking {
                         continuation.resume(returning: .failure(NetworkingError.error))
                         return
                     }
+                    //id only exists in field on front end (unless the appt gets updated)
                     appt.id = doc.documentID
                     appts.append(appt)
                 }
@@ -41,9 +46,41 @@ extension Networking {
 
         if let appointments = try? result.get() {
             await User.shared.setAppointments(appointments)
-            return appointments
+            return true
         } else {
-            return nil
+            return false
+        }
+    }
+    
+    static func fetchAllAppointments() async -> Bool {
+        shared.isShowingLoadingIndicator = true
+        let result: Result<[Appointment], Error> = await withCheckedContinuation({ continuation in
+            Firestore.firestore().collection("Appointments").order(by: "date").getDocuments() { querySnapshot, error in
+                guard error == nil else {
+                    continuation.resume(returning: .failure(error!))
+                    return
+                }
+                
+                var appts = [Appointment]()
+                for doc in querySnapshot?.documents ?? [] {
+                    guard var appt = Appointment.decode(dictionary: doc.data()) else {
+                        continuation.resume(returning: .failure(NetworkingError.error))
+                        return
+                    }
+                    //id only exists in field on front end (unless the appt gets updated)
+                    appt.id = doc.documentID
+                    appts.append(appt)
+                }
+                continuation.resume(returning: .success(appts))
+            }
+        })
+        shared.isShowingLoadingIndicator = false
+
+        if let appointments = try? result.get() {
+            await User.shared.setAppointments(appointments)
+            return true
+        } else {
+            return false
         }
     }
     
@@ -113,8 +150,10 @@ extension Networking {
     }
     
     static func deleteAllAppointments() async -> Bool {
-        let appts: [Appointment]? = await fetchAppointments()
-        guard let appts = appts else { return false }
+        guard User.shared.isAdmin == false else { return false }
+        
+        let success = await fetchAppointments()
+        guard success, let appts = User.shared.appointments else { return false }
         
         let deleteResults = await withTaskGroup(of: Bool.self, returning: [Bool].self) { group in
             for apptID in appts.compactMap({ $0.id }) {

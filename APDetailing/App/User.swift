@@ -11,19 +11,27 @@ import Foundation
     @Published var userID: String? = nil
     @Published var isLoggedIn: Bool = false
     @Published var appointments: [Appointment]? = nil
-    var adminIDs = [String]()
     
     static let shared = User()
 
-    private init() {}
-    
-    var isAdmin: Bool {
-        return userID != nil ? adminIDs.contains(userID!) : false
+    private init() {
+        if let userID = UserDefaults.standard.string(forKey: "userID") {
+            Task {
+                await setIsLoggedIn(phoneNumber: userID)
+                let success = await Networking.fetchAppointments()
+                if success == false { logOut() }
+            }
+        }
     }
     
-    func setIsLoggedIn(_ loggedIn: Bool, phoneNumber: String) async {
-        self.isLoggedIn = loggedIn
+    var isAdmin: Bool {
+        return userID != nil ? UserDefaults.standard.stringArray(forKey: "adminIDs")?.contains(userID!) == true : false
+    }
+    
+    func setIsLoggedIn(phoneNumber: String) async {
+        self.isLoggedIn = true
         self.userID = phoneNumber
+        UserDefaults.standard.set(phoneNumber, forKey: "userID")
     }
     
     func setAppointments(_ appts: [Appointment]) async {
@@ -31,12 +39,14 @@ import Foundation
     }
     
     func logOut() {
-        userID = nil
         appointments = nil
+        userID = nil
+        UserDefaults.standard.set(nil, forKey: "userID")
         isLoggedIn = false
     }
 }
 
-struct AdminIDs: Codable {
-    var ids: [String]?
+struct Admin: Codable {
+    var primaryPhone: String?
+    var adminIDs: [String]?
 }

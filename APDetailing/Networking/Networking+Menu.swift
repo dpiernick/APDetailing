@@ -10,7 +10,7 @@ import Firebase
 
 extension Networking {
     static func fetchMenu() async {
-        shared.isShowingLoadingIndicator = true
+        DetailMenu.shared.showingLaunchScreen = true
         let basicServices: BasicServices? = await withCheckedContinuation({ continuation in
             Firestore.firestore().collection("BasicDetailPackageServices").document("BasicServices").getDocument { doc, error in
                 guard error == nil, let basic = BasicServices.decode(dictionary: doc?.data() ?? [:]) else {
@@ -40,6 +40,6 @@ extension Networking {
         })
         
         DetailMenu.shared.menu = DetailMenuObject(detailPackages: detailPackages, basicServices: basicServices)
-        shared.isShowingLoadingIndicator = false
+        DetailMenu.shared.showingLaunchScreen = false
     }
 }
