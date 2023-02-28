@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct DetailPackagePicker: View {
+    var menu: DetailMenuObject?
     @Binding var selectedPackage: DetailPackage
+    
+    var priceList: [String] {
+        var list = [String]()
+        for package in menu?.detailPackages ?? [] {
+            package.nameAndPriceString.map({ list.append($0) })
+        }
+        
+        return list.isEmpty == false ? list : DetailPackage.defaultPriceStrings
+    }
 
     var body: some View {
         Menu {
             Picker("Package", selection: $selectedPackage) {
-                ForEach(MockDetailPackages.allPackages) { package in
-                    Text(package.id + " - " + package.priceString).tag(package)
+                ForEach(priceList, id: \.self) { price in
+                    Text(price).tag(price)
                 }
             }
         } label: {
@@ -22,7 +32,7 @@ struct DetailPackagePicker: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Package")
                         .foregroundColor(Color(UIColor.placeholderText))
-                    Text("\(selectedPackage.id) - \(selectedPackage.priceString)")
+                    Text(selectedPackage.nameAndPriceString ?? "")
                         .foregroundColor(.white)
                         .font(.title2)
                 }
@@ -45,6 +55,6 @@ struct DetailPackagePicker: View {
 
 //struct DetailPackagePicker_Previews: PreviewProvider {
 //    static var previews: some View {
-//        DetailPackagePicker(selectedPackage: MockDetailPackages.basic)
+//        DetailPackagePicker(selectedPackage: $DetailPackage.fullDetailPackage)
 //    }
-//} 
+//}

@@ -19,12 +19,8 @@ struct RequestUpdateApptView: View {
     @StateObject var viewModel: RequestUpdateApptViewModel
     @State var isLocationFocused: Bool = false
     
-    init(appt: Appointment, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
-        _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, completion: completion))
-    }
-    
-    init(selectedPackage: DetailPackage, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
-        _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(selectedPackage: selectedPackage, completion: completion))
+    init(appt: Appointment = Appointment(), selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+        _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, menu: menu, isEditing: isEditing, completion: completion))
     }
     
     var body: some View {
@@ -47,7 +43,7 @@ struct RequestUpdateApptView: View {
                                     viewModel.phone = viewModel.phone.formatPhoneNumber()
                                 }
                             
-                            DetailPackagePicker(selectedPackage: $viewModel.package)
+                            DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
                                 .padding(.bottom, 4)
                             
                             TextField("Car Description", text: $viewModel.carDescription, axis: .vertical)
@@ -119,6 +115,6 @@ struct RequestUpdateApptView: View {
 
 struct RequestApptView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestUpdateApptView(selectedPackage: MockDetailPackages.basic) { _ in }
+        RequestUpdateApptView() { _ in }
     }
 }

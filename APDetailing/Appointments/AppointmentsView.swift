@@ -10,10 +10,11 @@ import Firebase
 
 struct AppointmentsView: View {
     @ObservedObject var user = User.shared
-    @State var selectedPackage: DetailPackage = MockDetailPackages.basic
-    @State var showingRequestAppt = false
-    @State var showingMessageUI = false
-    @State var showApptDetail: Appointment? = nil
+    @StateObject var viewModel: AppointmentsViewModel
+    
+    init() {
+        _viewModel = StateObject(wrappedValue: AppointmentsViewModel())
+    }
     
     var body: some View {
         ContainerView() {
@@ -25,36 +26,68 @@ struct AppointmentsView: View {
                 }
             } else {
                 ZStack {
-                    VStack {
-                        if let appts = user.appointments, !appts.isEmpty {
-                            List(appts) { appt in
-                                AppointmentCellView(appt: appt)
-                                    .onTapGesture {
-                                        showApptDetail = appt
+                    VStack(spacing: 0) {
+                        Picker("Status", selection: $viewModel.statusFilter) {
+                            Text("Requested").tag(AppointmentStatus.requested)
+                            Text("Completed").tag(AppointmentStatus.completed)
+                        }
+                        .pickerStyle(.segmented)
+                        .padding([.top, .leading, .trailing])
+                        
+                        if let appts = viewModel.filteredAppts, !appts.isEmpty {
+                            List {
+                                if viewModel.upcomingAppts.count > 0 {
+                                    Section("Upcoming") {
+                                        ForEach(viewModel.upcomingAppts) { appt in
+                                            AppointmentCellView(appt: appt)
+                                                .onTapGesture {
+                                                    viewModel.showApptDetail = appt
+                                                }
+                                                .listRowSeparator(.hidden)
+                                        }
                                     }
-                                    .listRowSeparator(.hidden)
+                                }
+                                
+                                if viewModel.pastAppts.count > 0 {
+                                    Section("Past") {
+                                        ForEach(viewModel.pastAppts) { appt in
+                                            AppointmentCellView(appt: appt)
+                                                .onTapGesture {
+                                                    viewModel.showApptDetail = appt
+                                                }
+                                                .listRowSeparator(.hidden)
+                                        }
+                                    }
+                                }
                             }
                             .listStyle(.plain)
-                            Spacer()
                         } else {
                             Spacer()
                             Text("No Appointments!").frame(alignment: .center)
                             Spacer()
                         }
                     }
+                    .safeAreaInset(edge: .bottom) {
+                        RoundedButton(title: "Request Appointment") {
+                            viewModel.showingRequestAppt = true
+                        }
+                        .padding(20)
+                        .sheet(isPresented: $viewModel.showingRequestAppt) {
+                            RequestUpdateApptView(menu: DetailMenu.shared.menu) { _ in
+                                viewModel.showingRequestAppt = false
+                            }
+                        }
+                        .background(Color.black)
+                    }
                     
-                    if showApptDetail != nil {
-                        AppointmentCellDetailView(appt: showApptDetail!) {
-                            showApptDetail = nil
+                    if viewModel.showApptDetail != nil {
+                        AppointmentCellDetailView(appt: viewModel.showApptDetail!) {
+                            viewModel.showApptDetail = nil
                         }
                     }
                 }
             }
         }
-        .safeAreaInset(edge: .bottom) {
-            RequestAppointmentButton()
-        }
-
     }
 }
 

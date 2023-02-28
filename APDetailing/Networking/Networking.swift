@@ -12,3 +12,7 @@ import Firebase
     static var shared = Networking()
     @Published var isShowingLoadingIndicator = false
 }
+
+enum NetworkingError: Error {
+    case error
+}

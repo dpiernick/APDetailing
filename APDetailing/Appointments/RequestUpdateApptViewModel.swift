@@ -21,11 +21,14 @@ enum AppointmentError: Error {
     var id: String = ""
     @Published var name: String = ""
     @Published var phone: String = ""
-    @Published var package: DetailPackage = MockDetailPackages.basic
+    @Published var package: DetailPackage = .fullDetailPackage
     @Published var date: Date = Date() + .day
     @Published var timeOfDay: TimeOfDay?
     @Published var location: String = ""
     @Published var carDescription: String = ""
+    var status: AppointmentStatus = .requested
+    
+    var menu: DetailMenuObject? = nil
     
     @Published var invalidAppointment = false
     @Published var isShowingLogin = false
@@ -40,10 +43,11 @@ enum AppointmentError: Error {
     @Published var isShowingLocationError = false
     @Published var distanceTooFar = false
     
-    var completion: ((Result<Appointment, AppointmentError>) -> Void)
+    var completion: ((Result<Appointment, AppointmentError>) -> Void)?
     
     var appt: Appointment {
         Appointment(id: id,
+                    userID: User.shared.userID,
                     name: name,
                     phone: phone,
                     date: date,
@@ -51,27 +55,33 @@ enum AppointmentError: Error {
                     location: location,
                     carDescription: carDescription,
                     package: package,
-                    status: .requested)
+                    status: status)
     }
     
-    init(appt: Appointment?, completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
+        super.init()
         if let appt = appt {
             self.id = appt.id ?? ""
             self.name = appt.name ?? ""
             self.phone = appt.phone ?? ""
-            self.package = appt.package ?? MockDetailPackages.basic
-            self.date = appt.date ?? Date()
+            self.package = appt.package ?? selectedPackage
+            self.date = appt.date ?? Date() + .day
             self.timeOfDay = TimeOfDay(rawValue: appt.timeOfDay ?? "")
             self.location = appt.location ?? ""
             self.carDescription = appt.carDescription ?? ""
+            self.status = appt.status ?? .requested
         }
+        self.package = selectedPackage
+        self.menu = menu
+        self.isEditing = isEditing
         self.completion = completion
     }
     
-    init(selectedPackage: DetailPackage, completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
-        self.package = selectedPackage
-        self.completion = completion
-    }
+//    init(selectedPackage: DetailPackage, menu: DetailMenu, completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+//        self.appt.package = selectedPackage
+//        self.menu = menu
+//        self.completion = completion
+//    }
     
     func handleLogin(result: LoginResult) async {
         switch result {
@@ -96,15 +106,15 @@ enum AppointmentError: Error {
         
         let success = await Networking.requestAppointment(appt: appt)
         isShowingError = !success
-        completion(success ? .success(appt) : .failure(.submitError))
+        completion?(success ? .success(appt) : .failure(.submitError))
     }
     
     func updateAppointment() async {
         guard await isLocationInRange() else { return }
 
-        let success = await Networking.requestAppointment(appt: appt)
+        let success = await Networking.updateAppointment(appt: appt)
         isShowingError = !success
-        completion(success ? .success(appt) : .failure(.submitError))
+        completion?(success ? .success(appt) : .failure(.submitError))
     }
     
     func getLocationSuggestions(query: String) {
@@ -133,7 +143,7 @@ enum AppointmentError: Error {
     }
     
     func isLocationInRange() async -> Bool {
-        guard let addressLocation = (try? await CLGeocoder().geocodeAddressString(location))?.first?.location else {
+        guard let addressLocation = (try? await CLGeocoder().geocodeAddressString(appt.location ?? ""))?.first?.location else {
             isShowingLocationError = true
             return false
         }

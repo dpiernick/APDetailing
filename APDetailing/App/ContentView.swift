@@ -9,9 +9,11 @@ import SwiftUI
 
 @MainActor class ContentViewModel: ObservableObject {
     @Published var selectedTab = 0
+    @Published var showingUserScreen = false
 }
 
 struct ContentView: View {
+    @ObservedObject var user = User.shared
     @ObservedObject var networking = Networking.shared
     @StateObject var viewModel = ContentViewModel()
     
@@ -19,17 +21,32 @@ struct ContentView: View {
         ZStack {
             Color(.black).ignoresSafeArea()
             VStack {
-                HStack {
-                    Spacer()
+                ZStack {
                     Image("APDetailingLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200)
-                    Spacer()
+                    .frame(width: 200, alignment: .center)
+                    
+                    if user.isLoggedIn {
+                        Button {
+                            viewModel.showingUserScreen = true
+                        } label: {
+                            Label {
+                                Text("")
+                            } icon: {
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .tint(.white)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.trailing, 24)
+                    }
                 }
                 
                 TabView(selection: $viewModel.selectedTab) {
-                    ServicesView()
+                    MenuView()
                         .tabItem { Label("Services", systemImage: "car") }
                         .tag(0)
                         .onAppear() { viewModel.selectedTab = 0 }
@@ -37,7 +54,7 @@ struct ContentView: View {
                         .tabItem { Label("Appointments", systemImage: "calendar") }
                         .tag(1)
                         .onAppear() { viewModel.selectedTab = 1 }
-                    Text("Contact")
+                    ContactView()
                         .tabItem { Label("Contact", systemImage: "phone") }
                         .tag(2)
                         .onAppear() { viewModel.selectedTab = 2 }
@@ -53,6 +70,19 @@ struct ContentView: View {
                 }
             }
         })
+        .overlay {
+            if viewModel.showingUserScreen {
+                ZStack {
+                    Color.black.opacity(0.9)
+                        .onTapGesture {
+                            viewModel.showingUserScreen = false
+                        }
+                    LogoutDeleteAcctView() {
+                        viewModel.showingUserScreen = false
+                    }
+                }
+            }
+        }
     }
 }
 

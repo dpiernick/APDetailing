@@ -44,7 +44,7 @@ struct LocationSuggestionTextField: View {
             .zIndex(1)
             .alignmentGuide(.top, computeValue: { v in v[.bottom] })
             .focused($isFocused)
-            .onChange(of: viewModel.location) { newValue in
+            .onChange(of: viewModel.appt.location ?? "") { newValue in
                 viewModel.getLocationSuggestions(query: newValue)
             }
             .overlay(alignment: .top) {

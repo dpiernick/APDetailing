@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Appointment: Codable, Identifiable {
+struct Appointment: Codable, Identifiable, Hashable {
     var id: String? = ""
     var userID: String? = ""
     var name: String? = ""
@@ -17,7 +17,7 @@ struct Appointment: Codable, Identifiable {
     var timeOfDay: String? = ""
     var location: String? = ""
     var carDescription: String? = ""
-    var package: DetailPackage? = MockDetailPackages.basic
+    var package: DetailPackage? = nil
     var status: AppointmentStatus? = .requested
     
     var statusString: String {
@@ -52,10 +52,10 @@ struct Appointment: Codable, Identifiable {
         guard validateAppt() else { return "" }
         return """
                Hi, I'd like to request an appointment:
-               \(date!.formatted(date: .complete, time: .omitted)) - \(timeOfDay ?? "Any Time")
-               \(name!) - \(phone!)
-               \(location!)
-               \(package!.id) - \(package!.priceString)
+               \(date?.formatted(date: .complete, time: .omitted) ?? Date().addingTimeInterval(.day).formatted(date: .complete, time: .omitted)) - \(timeOfDay ?? "Any Time")
+               \(name ?? "") - \(phone ?? "")
+               \(location ?? "")
+               \(package?.nameAndPriceString ?? "")
                \(carDescription!)
                """
     }
@@ -68,22 +68,7 @@ enum AppointmentStatus: String, Codable {
     case cancelled
 }
 
-struct MockAppointments {
-    static let appt1 = Appointment(id: "1",
-                                   name: "name1",
-                                   phone: "phone1",
-                                   date: Date(),
-                                   timeOfDay: "morning",
-                                   location: "location1",
-                                   carDescription: "carDescription1",
-                                   package: MockDetailPackages.basic)
-    
-    static let appt2 = Appointment(id: "2",
-                                   name: "name2",
-                                   phone: "phone2",
-                                   date: Date().advanced(by: .day),
-                                   timeOfDay: "afternoon",
-                                   location: "location2",
-                                   carDescription: "carDescription2",
-                                   package: MockDetailPackages.deluxe)
+extension Appointment {
+    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, status: .requested)
+    static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, status: .completed)
 }

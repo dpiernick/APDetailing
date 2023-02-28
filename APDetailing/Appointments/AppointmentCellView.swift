@@ -12,19 +12,21 @@ struct AppointmentCellView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            VStack {
-                Text(appt.date!.monthAbbv)
-                Text(appt.date!.dayOfMonth).font(.title)
-                Text(appt.date!.year)
+            if let apptDate = appt.date {
+                VStack {
+                    Text(apptDate.monthAbbv)
+                    Text(apptDate.dayOfMonth).font(.title)
+                    Text(apptDate.year)
+                }
+                .padding()
             }
-            .padding()
             
             VStack(alignment: .leading) {
                 HStack {
                     Text(appt.statusString).foregroundColor(appt.statusStringColor)
                     Text("- \(appt.timeOfDay!)")
                 }
-                Text("\(appt.package!.id) - $\(appt.package!.price)")
+                Text(appt.package?.nameAndPriceString ?? "")
                     .font(.title)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
@@ -42,6 +44,6 @@ struct AppointmentCellView: View {
 
 struct AppointmentStatusView_Previews: PreviewProvider {
     static var previews: some View {
-            AppointmentCellView(appt: MockAppointments.appt1)
+            AppointmentCellView(appt: Appointment())
     }
 }

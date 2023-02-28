@@ -10,13 +10,14 @@ import SwiftUI
 
 struct DetailPackageView: View {
     
-    var item: DetailPackage
+    var package: DetailPackage
+    var basicServices: BasicServices
     
     var body: some View {
         ZStack {
             Color(.black)
             VStack(alignment: .leading) {
-                Text("\(item.id) - $\(item.price)")
+                Text(package.nameAndPriceString ?? "")
                     .foregroundColor(.white)
                     .font(.system(size: 36, weight: .heavy, design: .default))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,56 +26,70 @@ struct DetailPackageView: View {
                     VStack(alignment: .leading) {
                         Text("EXTERIOR")
                             .foregroundColor(.red)
-                            .font(.system(size: 30, weight: .medium, design: .rounded))
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
                             .padding(.bottom, 2)
-                        ForEach(item.exteriorServices, id: \.self) { service in
+                        ForEach(basicServices.exteriorServices ?? [], id: \.self) { service in
                             HStack(alignment: .firstTextBaseline) {
                                 Text("- ")
                                     .foregroundColor(.white)
                                     .font(.system(size: 20, weight: .bold, design: .rounded))
                                 
-                                let boldItalic = MockDetailPackages.basicExterior.contains(service)
-                                if boldItalic {
-                                    Text("\(service.rawValue)")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20, weight: .medium))
-                                } else {
-                                    Text("\(service.rawValue)")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20, weight: .heavy))
-                                        .italic()
-                                }
+                                Text("\(service)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .medium))
                             }
-
                         }
                         .padding(.vertical, 1)
-                        Text("INTERIOR")
-                            .foregroundColor(.red)
-                            .font(.system(size: 30, weight: .bold, design: .rounded))
-                            .padding(.vertical, 2)
-                        ForEach(item.interiorServices, id: \.self) { service in
+                        
+                        ForEach(package.exteriorServices ?? [], id: \.self) { service in
                             HStack(alignment: .firstTextBaseline) {
                                 Text("- ")
                                     .foregroundColor(.white)
                                     .font(.system(size: 20, weight: .bold, design: .rounded))
-                                let boldItalic = MockDetailPackages.basicInterior.contains(service)
-                                if boldItalic {
-                                    Text("\(service.rawValue)")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20, weight: .medium, design: .rounded))
-                                } else {
-                                    Text("\(service.rawValue)")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20, weight: .heavy))
-                                        .italic()
-                                }
+                                
+                                Text("\(service)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .heavy))
+                                    .italic()
                             }
                         }
                         .padding(.vertical, 1)
+                        
+                        Text("INTERIOR")
+                            .foregroundColor(.red)
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
+                            .padding(.vertical, 2)
+                        
+                        ForEach(basicServices.interiorServices ?? [], id: \.self) { service in
+                            HStack(alignment: .firstTextBaseline) {
+                                Text("- ")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                                
+                                Text("\(service)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .medium))
+                            }
+                        }
+                        .padding(.vertical, 1)
+
+                        ForEach(package.interiorServices ?? [], id: \.self) { service in
+                            HStack(alignment: .firstTextBaseline) {
+                                Text("- ")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                                
+                                Text("\(service)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .heavy))
+                                    .italic()
+                            }
+                        }
+                        .padding(.vertical, 1)
+                        
                         Spacer()
                     }
                 }
-                
             }
             .padding()
         }
@@ -84,6 +99,6 @@ struct DetailPackageView: View {
 
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailPackageView(item: MockDetailPackages.exclusive)
+        DetailPackageView(package: DetailPackage.inOutDetailPackage, basicServices: BasicServices(exteriorServices: ["test 1"], interiorServices: ["test 2"]))
     }
 }

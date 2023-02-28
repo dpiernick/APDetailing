@@ -46,12 +46,22 @@ extension Networking {
                 continuation.resume(returning: result?.user.phoneNumber)
             }
         })
-        shared.isShowingLoadingIndicator = false
         
-        if phoneNumber != nil {
+        await withCheckedContinuation({ continuation in
+            Firestore.firestore().collection("AdminIDs").document("AdminIDs").getDocument { document, error in
+                let adminIDsObject = AdminIDs.decode(dictionary: document?.data() ?? [:])
+                User.shared.adminIDs = adminIDsObject?.ids ?? []
+                continuation.resume()
+            }
+        })
+        
+        if let phoneNumber = phoneNumber {
             await User.shared.setIsLoggedIn(true, phoneNumber: phoneNumber)
-            return await fetchAppointments()
+            let success: Bool = await fetchAppointments()
+            shared.isShowingLoadingIndicator = false
+            return success
         } else {
+            shared.isShowingLoadingIndicator = false
             return false
         }
     }
