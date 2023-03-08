@@ -23,8 +23,8 @@ struct DetailPackagePicker: View {
     var body: some View {
         Menu {
             Picker("Package", selection: $selectedPackage) {
-                ForEach(priceList, id: \.self) { price in
-                    Text(price).tag(price)
+                ForEach(menu?.detailPackages ?? [], id: \.self) { package in
+                    Text(package.nameAndPriceString ?? "").tag(package)
                 }
             }
         } label: {

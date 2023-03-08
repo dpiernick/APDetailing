@@ -70,18 +70,13 @@ enum AppointmentError: Error {
             self.location = appt.location ?? ""
             self.carDescription = appt.carDescription ?? ""
             self.status = appt.status ?? .requested
+        } else {
+            self.package = selectedPackage
         }
-        self.package = selectedPackage
         self.menu = menu
         self.isEditing = isEditing
         self.completion = completion
     }
-    
-//    init(selectedPackage: DetailPackage, menu: DetailMenu, completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
-//        self.appt.package = selectedPackage
-//        self.menu = menu
-//        self.completion = completion
-//    }
     
     func handleLogin(result: LoginResult) async {
         switch result {

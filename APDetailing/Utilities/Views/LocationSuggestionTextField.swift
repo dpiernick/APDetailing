@@ -47,7 +47,7 @@ struct LocationSuggestionTextField: View {
                 viewModel.getLocationSuggestions(query: newValue)
             }
             .overlay(alignment: .top) {
-                if viewModel.suggestions.isEmpty == false {
+                if viewModel.suggestions.isEmpty == false && isFocused {
                     suggestionOverlay
                 }
             }

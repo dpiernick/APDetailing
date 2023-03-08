@@ -55,9 +55,9 @@ struct RequestUpdateApptView: View {
                                        displayedComponents: .date)
                             .datePickerStyle(.graphical)
                             .accentColor(.red)
-                            .onSubmit {
+                            .onChange(of: viewModel.date, perform: { _ in
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            }
+                            })
                             
                             HStack {
                                 RoundedButton(title: "Morning", type: viewModel.timeOfDay == .morning ? .primary : .secondary) {
