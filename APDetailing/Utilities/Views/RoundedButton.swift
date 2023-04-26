@@ -40,7 +40,7 @@ struct RoundedButton: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 .padding()
-                .padding(.horizontal, 25)
+                .padding(.horizontal)
                 .background(type == .secondary ? Color.clear : color ?? Color.red)
                 .background {
                     if type == .secondary {

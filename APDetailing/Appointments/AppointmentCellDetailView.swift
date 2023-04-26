@@ -42,7 +42,6 @@ struct AppointmentCellDetailView: View {
                             Text(viewModel.appt.package?.nameAndPriceString ?? "")
                                 .font(.title)
                             Text(viewModel.appt.location ?? "")
-                            Text(viewModel.appt.carDescription ?? "")
                         }
                     }
                     
@@ -56,13 +55,17 @@ struct AppointmentCellDetailView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    HStack {
+                    HStack(alignment: .top) {
                         Text("Name:").foregroundColor(.gray)
                         Text(viewModel.appt.name!)
                     }
-                    HStack {
+                    HStack(alignment: .top) {
                         Text("Phone:").foregroundColor(.gray)
                         Text(viewModel.appt.phone!)
+                    }
+                    HStack(alignment: .top) {
+                        Text("Car:").foregroundColor(.gray)
+                        Text(viewModel.appt.carDescription!)
                     }
                     .padding(.bottom, 20)
                     

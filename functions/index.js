@@ -7,13 +7,38 @@ exports.sendNewApptPushNotification = functions.firestore
     .onCreate(async (snap, context) => {
         
         const title = "New Appointment Request";
-        const content = snap.data().date + " - " + snap.data().timeOfDay
+        const content = snap.data().dateString + " - " + snap.data().timeOfDay
         const message = {
             notification: {
                 title: title,
-                body: content,
+                body: content
             },
+            data: { apptID: context.params.appointmentID },
             topic: "admin"
+        }
+            
+        let response = await admin.messaging().send(message);
+        console.log("Response: ", response);
+    })
+
+exports.sendApptUpdatePushNotification = functions.firestore
+    .document("Appointments/{appointmentID}")
+    .onUpdate(async (change, context) => {
+        
+        let userID = change.after.data().userID
+        let query = await admin.firestore().collection("Users").doc(userID).get()
+        let fcmToken = query.data().fcmToken
+        
+        const title = "Appointment Updated";
+        const statusUpdate = change.before.data().status != change.after.data().status ? change.after.data().status + ": " : ""
+        const content = statusUpdate + change.after.data().dateString + " - " + change.after.data().timeOfDay
+        const message = {
+            notification: {
+                title: title,
+                body: content
+            },
+            data: { apptID: context.params.appointmentID },
+            token: fcmToken
         }
             
         let response = await admin.messaging().send(message);

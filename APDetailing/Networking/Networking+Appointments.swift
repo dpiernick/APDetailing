@@ -122,12 +122,16 @@ extension Networking {
     }
     
     static func deleteAllAppointments() async -> NetworkingError? {
-        guard User.shared.isAdmin == false else { return .error }
+        guard let userID = User.shared.userID, User.shared.isAdmin == false else { return .error }
+        guard let query = try? await Firestore.firestore().collection("Appointments").whereField("userID", isEqualTo: userID).getDocuments() else { return nil }
         
-        guard await fetchAppointments() == nil, let appts = User.shared.appointments else { return .error }
+        var apptIDs = [String]()
+        for doc in query.documents {
+            apptIDs.append(doc.documentID)
+        }
         
         let deleteResults = await withTaskGroup(of: Bool.self, returning: [Bool].self) { group in
-            for apptID in appts.compactMap({ $0.id }) {
+            for apptID in apptIDs {
                 group.addTask {
                     return await deleteAppointment(apptID: apptID)
                 }

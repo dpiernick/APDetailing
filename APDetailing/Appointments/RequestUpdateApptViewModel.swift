@@ -92,6 +92,7 @@ enum AppointmentError: Error {
     }
     
     func requestAppointment() async {
+        print("tap")
         guard appt.validateAppt() else {
             invalidAppointment = true
             return

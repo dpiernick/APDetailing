@@ -15,19 +15,20 @@ extension Networking {
     static func submitPhoneNumber(_ phone: String) async -> Bool {
         let phoneNumber = "+1" + phone.numbersOnly
         guard phoneNumber.count == 12 else {
-            self.shared.isShowingLoadingIndicator = false
             return false
         }
         
         shared.isShowingLoadingIndicator = true
-        guard let verificationID = try? await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) else {
-            self.shared.isShowingLoadingIndicator = false
-            return false
+        var verificationID: String?
+        do {
+            verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
+        } catch {
+            print(error)
         }
-                
-        UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
         self.shared.isShowingLoadingIndicator = false
-        return true
+        
+        UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+        return verificationID != nil
     }
     
     static func signIn(withCode code: String) async -> Bool {
@@ -41,10 +42,6 @@ extension Networking {
         
         if let phoneNumber = phoneNumber {
             await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)
-            
-            if User.shared.isAdmin {
-                try? await Messaging.messaging().subscribe(toTopic: "admin")
-            }
             
             let success = await fetchAppointments() == nil
             shared.isShowingLoadingIndicator = false

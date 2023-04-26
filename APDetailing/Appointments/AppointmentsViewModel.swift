@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 
 @MainActor class AppointmentsViewModel: ObservableObject {
     @Published var selectedPackage: DetailPackage? = nil

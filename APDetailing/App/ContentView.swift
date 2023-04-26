@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-@MainActor class ContentViewModel: ObservableObject {
-    @Published var selectedTab = 0
-    @Published var showingUserScreen = false
-}
-
 struct ContentView: View {
     @ObservedObject var user = User.shared
     @ObservedObject var networking = Networking.shared
     @ObservedObject var menu = DetailMenu.shared
+    @ObservedObject var deepLinkRouter = DeepLinkRouter.shared
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
@@ -65,6 +61,9 @@ struct ContentView: View {
                             .tag(2)
                             .onAppear() { viewModel.selectedTab = 2 }
                     }
+                    .onReceive(deepLinkRouter.$deepLinkView) { _ in
+                        Task { await viewModel.handleDeepLink() }
+                    }
                 }
                 .overlay(content: {
                     if networking.isShowingLoadingIndicator {
@@ -87,6 +86,12 @@ struct ContentView: View {
                             }
                         }
                     }
+                }
+            }
+            
+            if let appt = viewModel.deepLinkAppt {
+                AppointmentCellDetailView(appt: appt) {
+                    viewModel.deepLinkAppt = nil
                 }
             }
         }

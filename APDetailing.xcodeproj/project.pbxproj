@@ -34,6 +34,7 @@
 		558D3D0128FF28A70068977A /* DetailPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D3D0028FF28A70068977A /* DetailPackageView.swift */; };
 		558D3D0328FF28C60068977A /* DetailMenuModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D3D0228FF28C60068977A /* DetailMenuModels.swift */; };
 		55AF3B98290A7FA100DE2C79 /* DetailPackagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */; };
+		55C1D6FC29F9156300221C16 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D6FB29F9156300221C16 /* ContentViewModel.swift */; };
 		55D153B2290A517B00860720 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D153B1290A517B00860720 /* RoundedButton.swift */; };
 		55D153B4290A5A3900860720 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D153B3290A5A3900860720 /* ContainerView.swift */; };
 		55D3C76E299868B30073379C /* AppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3C76D299868B30073379C /* AppointmentModel.swift */; };
@@ -48,6 +49,7 @@
 		55D3C7872998C4D70073379C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3C7862998C4D70073379C /* User.swift */; };
 		55E0C04829773702008FB508 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04729773702008FB508 /* MessageViewController.swift */; };
 		55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04929773C4D008FB508 /* MessageUIView.swift */; };
+		55E4560C29F8D72B00D703A8 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */; };
 		55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68429A3429300DB812D /* Networking+Appointments.swift */; };
 		55FFB68729A342D000DB812D /* Networking+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68629A342D000DB812D /* Networking+Login.swift */; };
 		55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */; };
@@ -84,6 +86,7 @@
 		558D3D0028FF28A70068977A /* DetailPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPackageView.swift; sourceTree = "<group>"; };
 		558D3D0228FF28C60068977A /* DetailMenuModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuModels.swift; sourceTree = "<group>"; };
 		55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPackagePicker.swift; sourceTree = "<group>"; };
+		55C1D6FB29F9156300221C16 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		55D153B1290A517B00860720 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		55D153B3290A5A3900860720 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		55D3C76D299868B30073379C /* AppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentModel.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		55D3C7862998C4D70073379C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55E0C04729773702008FB508 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		55E0C04929773C4D008FB508 /* MessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIView.swift; sourceTree = "<group>"; };
+		55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
 		55FFB68429A3429300DB812D /* Networking+Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Appointments.swift"; sourceTree = "<group>"; };
 		55FFB68629A342D000DB812D /* Networking+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Login.swift"; sourceTree = "<group>"; };
 		55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSuggestionTextField.swift; sourceTree = "<group>"; };
@@ -195,10 +199,12 @@
 			children = (
 				558D3CEE28FF26700068977A /* APDetailingApp.swift */,
 				558D3CF028FF26700068977A /* ContentView.swift */,
+				55C1D6FB29F9156300221C16 /* ContentViewModel.swift */,
 				55D3C7862998C4D70073379C /* User.swift */,
 				5542B2DF29ADF4AA0080B220 /* DetailMenu.swift */,
 				558D3CF228FF26710068977A /* Assets.xcassets */,
 				55D3C76F299872600073379C /* GoogleService-Info.plist */,
+				55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				5540C7D429F71D4E00463625 /* Networking+Admin.swift in Sources */,
 				5542B2E429AE0B250080B220 /* CustomTextField.swift in Sources */,
 				5542B2D529AD6DFF0080B220 /* AppointmentsViewModel.swift in Sources */,
+				55E4560C29F8D72B00D703A8 /* DeepLinkRouter.swift in Sources */,
 				558D3D0328FF28C60068977A /* DetailMenuModels.swift in Sources */,
 				55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */,
 				55FFB69329A73D6200DB812D /* Networking+Menu.swift in Sources */,
@@ -381,6 +388,7 @@
 				55D3C7852998C39A0073379C /* AppointmentCellView.swift in Sources */,
 				55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */,
 				5542B2DC29ADE5630080B220 /* ContactView.swift in Sources */,
+				55C1D6FC29F9156300221C16 /* ContentViewModel.swift in Sources */,
 				558D3CEF28FF26700068977A /* APDetailingApp.swift in Sources */,
 				5542B2D329AD61BD0080B220 /* AppointmentCellDetailViewModel.swift in Sources */,
 				558D3CFF28FF287A0068977A /* TimeInterval+Extensions.swift in Sources */,

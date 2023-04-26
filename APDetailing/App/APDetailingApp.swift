@@ -67,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         let userInfo = notification.request.content.userInfo
         Messaging.messaging().appDidReceiveMessage(userInfo)
-        print(userInfo)
         
         return [[.banner, .list, .sound, .badge]]
     }
@@ -75,8 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
         let userInfo = response.notification.request.content.userInfo
         Messaging.messaging().appDidReceiveMessage(userInfo)
-        print(userInfo)
+        if let apptID = userInfo["apptID"] as? String {
+            print("set DLR appt")
+            DeepLinkRouter.shared.deepLinkView = .appointment(id: apptID)
+        }
     }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {}
 }
 
 
