@@ -37,8 +37,6 @@ struct LogoutDeleteAcctView: View {
                 }
             }
             .padding()
-            .frame(height: 500)
-            .background(.black)
         }
     }
 }

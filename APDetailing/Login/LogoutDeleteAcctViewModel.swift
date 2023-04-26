@@ -16,7 +16,7 @@ import Firebase
         self.completion = completion
     }
     
-    func deleteAccountAndAppointments() async -> Bool {
+    func deleteAccountAndAppointments() async -> NetworkingError? {
         let success = await Networking.deleteAllAppointments()
         logOut()
         return success

@@ -7,31 +7,27 @@
 
 import Foundation
 import Firebase
+import FirebaseMessaging
 
 extension Networking {
     
+    //todo specify error
     static func submitPhoneNumber(_ phone: String) async -> Bool {
-        await withCheckedContinuation({ continuation in
-            let phoneNumber = "+1" + phone.numbersOnly
-            guard phoneNumber.count == 12 else {
-                continuation.resume(returning: false)
-                return
-            }
-            
-            shared.isShowingLoadingIndicator = true
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                guard error == nil else {
-                    print(error!.localizedDescription)
-                    continuation.resume(returning: false)
-                    self.shared.isShowingLoadingIndicator = false
-                    return
-                }
+        let phoneNumber = "+1" + phone.numbersOnly
+        guard phoneNumber.count == 12 else {
+            self.shared.isShowingLoadingIndicator = false
+            return false
+        }
+        
+        shared.isShowingLoadingIndicator = true
+        guard let verificationID = try? await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) else {
+            self.shared.isShowingLoadingIndicator = false
+            return false
+        }
                 
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                continuation.resume(returning: true)
-                self.shared.isShowingLoadingIndicator = false
-            }
-        })
+        UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+        self.shared.isShowingLoadingIndicator = false
+        return true
     }
     
     static func signIn(withCode code: String) async -> Bool {
@@ -40,25 +36,17 @@ extension Networking {
         }
         
         shared.isShowingLoadingIndicator = true
-        let phoneNumber: String? = await withCheckedContinuation({ continuation in
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
-            Auth.auth().signIn(with: credential) { result, error in
-                continuation.resume(returning: result?.user.phoneNumber)
-            }
-        })
-        
-        await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("Admin").document("Admin").getDocument { document, error in
-                let adminIDsObject = Admin.decode(dictionary: document?.data() ?? [:])
-                UserDefaults.standard.set(adminIDsObject?.primaryPhone, forKey: "primaryPhone")
-                UserDefaults.standard.set(adminIDsObject?.adminIDs, forKey: "adminIDs")
-                continuation.resume()
-            }
-        })
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
+        let phoneNumber = try? (await Auth.auth().signIn(with: credential)).user.phoneNumber
         
         if let phoneNumber = phoneNumber {
             await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)
-            let success: Bool = await fetchAppointments()
+            
+            if User.shared.isAdmin {
+                try? await Messaging.messaging().subscribe(toTopic: "admin")
+            }
+            
+            let success = await fetchAppointments() == nil
             shared.isShowingLoadingIndicator = false
             return success
         } else {
@@ -66,4 +54,5 @@ extension Networking {
             return false
         }
     }
+
 }

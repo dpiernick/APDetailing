@@ -14,6 +14,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var name: String?
     var phone: String?
     var date: Date?
+    var dateString: String?
     var timeOfDay: String?
     var location: String?
     var carDescription: String?
@@ -52,7 +53,7 @@ struct Appointment: Codable, Identifiable, Hashable {
         guard validateAppt() else { return "" }
         return """
                Hi, I'd like to request an appointment:
-               \(date?.formatted(date: .complete, time: .omitted) ?? Date().addingTimeInterval(.day).formatted(date: .complete, time: .omitted)) - \(timeOfDay ?? "Any Time")
+               \(dateString ?? Date.tomorrowString()) - \(timeOfDay ?? "Any Time")
                \(name ?? "") - \(phone ?? "")
                \(location ?? "")
                \(package?.nameAndPriceString ?? "")

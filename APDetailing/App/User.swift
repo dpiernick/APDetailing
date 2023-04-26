@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Admin: Codable {
+    var phone: String?
+}
+
 @MainActor class User: ObservableObject {
     @Published var userID: String? = nil
     @Published var isLoggedIn: Bool = false
@@ -18,7 +22,7 @@ import Foundation
         if let userID = UserDefaults.standard.string(forKey: "userID") {
             Task {
                 await setIsLoggedIn(phoneNumber: userID)
-                let success = await Networking.fetchAppointments()
+                let success = await Networking.fetchAppointments() == nil
                 if success == false { logOut() }
             }
         }
@@ -46,7 +50,4 @@ import Foundation
     }
 }
 
-struct Admin: Codable {
-    var primaryPhone: String?
-    var adminIDs: [String]?
-}
+

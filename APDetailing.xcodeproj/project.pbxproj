@@ -10,6 +10,9 @@
 		5514FEF0297743E500A95E77 /* RequestUpdateApptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */; };
 		5514FEF2297883BC00A95E77 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF1297883BC00A95E77 /* String+Extensions.swift */; };
 		5514FEF62988CEC000A95E77 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF52988CEC000A95E77 /* Networking.swift */; };
+		5540C7D029F70D1F00463625 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7CF29F70D1F00463625 /* FirebaseFunctions */; };
+		5540C7D229F70D2700463625 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7D129F70D2700463625 /* FirebaseMessaging */; };
+		5540C7D429F71D4E00463625 /* Networking+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540C7D329F71D4E00463625 /* Networking+Admin.swift */; };
 		5542B2D329AD61BD0080B220 /* AppointmentCellDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2D229AD61BD0080B220 /* AppointmentCellDetailViewModel.swift */; };
 		5542B2D529AD6DFF0080B220 /* AppointmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2D429AD6DFF0080B220 /* AppointmentsViewModel.swift */; };
 		5542B2D729AD794F0080B220 /* LogoutDeleteAcctView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2D629AD794F0080B220 /* LogoutDeleteAcctView.swift */; };
@@ -57,6 +60,7 @@
 		5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUpdateApptViewModel.swift; sourceTree = "<group>"; };
 		5514FEF1297883BC00A95E77 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		5514FEF52988CEC000A95E77 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		5540C7D329F71D4E00463625 /* Networking+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Admin.swift"; sourceTree = "<group>"; };
 		5542B2D229AD61BD0080B220 /* AppointmentCellDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCellDetailViewModel.swift; sourceTree = "<group>"; };
 		5542B2D429AD6DFF0080B220 /* AppointmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewModel.swift; sourceTree = "<group>"; };
 		5542B2D629AD794F0080B220 /* LogoutDeleteAcctView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutDeleteAcctView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5540C7D229F70D2700463625 /* FirebaseMessaging in Frameworks */,
+				5540C7D029F70D1F00463625 /* FirebaseFunctions in Frameworks */,
 				55D3C773299877F50073379C /* FirebaseAuth in Frameworks */,
 				55D3C775299877F50073379C /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -114,6 +120,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5540C7CE29F70D1F00463625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5542B2DA29ADE5510080B220 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +152,7 @@
 			children = (
 				558D3CED28FF26700068977A /* APDetailing */,
 				558D3CEC28FF26700068977A /* Products */,
+				5540C7CE29F70D1F00463625 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -249,6 +263,7 @@
 				55FFB68429A3429300DB812D /* Networking+Appointments.swift */,
 				55FFB68629A342D000DB812D /* Networking+Login.swift */,
 				55FFB69229A73D6200DB812D /* Networking+Menu.swift */,
+				5540C7D329F71D4E00463625 /* Networking+Admin.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -272,6 +287,8 @@
 			packageProductDependencies = (
 				55D3C772299877F50073379C /* FirebaseAuth */,
 				55D3C774299877F50073379C /* FirebaseFirestoreSwift */,
+				5540C7CF29F70D1F00463625 /* FirebaseFunctions */,
+				5540C7D129F70D2700463625 /* FirebaseMessaging */,
 			);
 			productName = APDetailing;
 			productReference = 558D3CEB28FF26700068977A /* APDetailing.app */;
@@ -334,6 +351,7 @@
 				5542B2D929AD7E550080B220 /* LogoutDeleteAcctViewModel.swift in Sources */,
 				55D3C76E299868B30073379C /* AppointmentModel.swift in Sources */,
 				558D3CFD28FF28520068977A /* RequestUpdateApptView.swift in Sources */,
+				5540C7D429F71D4E00463625 /* Networking+Admin.swift in Sources */,
 				5542B2E429AE0B250080B220 /* CustomTextField.swift in Sources */,
 				5542B2D529AD6DFF0080B220 /* AppointmentsViewModel.swift in Sources */,
 				558D3D0328FF28C60068977A /* DetailMenuModels.swift in Sources */,
@@ -595,6 +613,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5540C7CF29F70D1F00463625 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D3C771299877F50073379C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		5540C7D129F70D2700463625 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D3C771299877F50073379C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		55D3C772299877F50073379C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55D3C771299877F50073379C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -39,19 +39,19 @@ import Foundation
     }
     
     func updateStatusToConfirmed() async {
-        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .confirmed)
+        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .confirmed) == nil
         if success { appt.status = .confirmed }
         completion()
     }
     
     func updateStatusToCompleted() async {
-        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .completed)
+        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .completed) == nil
         if success { appt.status = .completed }
         completion()
     }
     
     func updateStatusToCancelled() async {
-        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .cancelled)
+        let success = await Networking.updateAppointmentStatus(apptID: appt.id ?? "", status: .cancelled) == nil
         if success { appt.status = .cancelled }
         completion()
     }

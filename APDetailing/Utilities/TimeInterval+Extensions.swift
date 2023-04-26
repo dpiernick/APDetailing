@@ -34,3 +34,19 @@ extension Date {
         return formatter.string(from: self)
     }
 }
+
+extension Date {
+    static func fromString(_ dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM dd, yyyy"
+        return dateFormatter.date(from: dateString)
+    }
+    
+    func dateString() -> String {
+        self.formatted(date: .long, time: .omitted)
+    }
+    
+    static func tomorrowString() -> String {
+        Date().addingTimeInterval(.day).formatted(date: .long, time: .omitted)
+    }
+}

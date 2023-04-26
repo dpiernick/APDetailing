@@ -92,7 +92,9 @@ struct RequestUpdateApptView: View {
                     }
                 }
                 .alert("Please fill in all required information", isPresented: $viewModel.invalidAppointment) {}
-                .alert("Something went wrong!", isPresented: $viewModel.isShowingError) {}
+                .alert("Something went wrong requesting your appointment, please try again.", isPresented: $viewModel.isShowingSubmitError) {}
+                .alert("Something went wrong updating your appointment, please try again.", isPresented: $viewModel.isShowingUpdateError) {}
+                .alert("Your appointment was submitted, but something went wrong updating the list", isPresented: $viewModel.isShowingSubmitError) {}
                 .alert("Invalid Address", isPresented: $viewModel.isShowingLocationError) {}
                 .alert(isPresented: $viewModel.distanceTooFar) {
                     Alert(title: Text("We don't service this area"),

@@ -14,6 +14,8 @@ import SwiftUI
 enum AppointmentError: Error {
     case invalidAppointment
     case submitError
+    case updateError
+    case fetchError
     case loggedOut
 }
 
@@ -32,7 +34,9 @@ enum AppointmentError: Error {
     
     @Published var invalidAppointment = false
     @Published var isShowingLogin = false
-    @Published var isShowingError = false
+    @Published var isShowingSubmitError = false
+    @Published var isShowingUpdateError = false
+    @Published var isShowingFetchError = false
     @Published var isShowingMessageUI = false
     
     var isEditing = false
@@ -51,6 +55,7 @@ enum AppointmentError: Error {
                     name: name,
                     phone: phone,
                     date: date,
+                    dateString: date.formatted(date: .long, time: .omitted),
                     timeOfDay: timeOfDay?.rawValue,
                     location: location,
                     carDescription: carDescription,
@@ -99,17 +104,19 @@ enum AppointmentError: Error {
         
         guard await isLocationInRange() else { return }
         
-        let success = await Networking.requestAppointment(appt: appt)
-        isShowingError = !success
-        completion?(success ? .success(appt) : .failure(.submitError))
+        let error = await Networking.requestAppointment(appt: appt)
+        isShowingUpdateError = error == .submitError
+        isShowingFetchError = error == .fetchError
+        completion?(error == nil ? .success(appt) : .failure(error!))
     }
     
     func updateAppointment() async {
         guard await isLocationInRange() else { return }
 
-        let success = await Networking.updateAppointment(appt: appt)
-        isShowingError = !success
-        completion?(success ? .success(appt) : .failure(.submitError))
+        let error = await Networking.updateAppointment(appt: appt)
+        isShowingUpdateError = error == .submitError
+        isShowingFetchError = error == .fetchError
+        completion?(error == nil ? .success(appt) : .failure(error!))
     }
     
     func getLocationSuggestions(query: String) {
