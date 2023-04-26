@@ -50,7 +50,6 @@
 		55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04929773C4D008FB508 /* MessageUIView.swift */; };
 		55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68429A3429300DB812D /* Networking+Appointments.swift */; };
 		55FFB68729A342D000DB812D /* Networking+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68629A342D000DB812D /* Networking+Login.swift */; };
-		55FFB68929A4DD6200DB812D /* RequestAppointmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68829A4DD6200DB812D /* RequestAppointmentButton.swift */; };
 		55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */; };
 		55FFB69129A73C5000DB812D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB69029A73C5000DB812D /* MenuViewModel.swift */; };
 		55FFB69329A73D6200DB812D /* Networking+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB69229A73D6200DB812D /* Networking+Menu.swift */; };
@@ -99,7 +98,6 @@
 		55E0C04929773C4D008FB508 /* MessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIView.swift; sourceTree = "<group>"; };
 		55FFB68429A3429300DB812D /* Networking+Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Appointments.swift"; sourceTree = "<group>"; };
 		55FFB68629A342D000DB812D /* Networking+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Login.swift"; sourceTree = "<group>"; };
-		55FFB68829A4DD6200DB812D /* RequestAppointmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAppointmentButton.swift; sourceTree = "<group>"; };
 		55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSuggestionTextField.swift; sourceTree = "<group>"; };
 		55FFB69029A73C5000DB812D /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		55FFB69229A73D6200DB812D /* Networking+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Menu.swift"; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				55D153B1290A517B00860720 /* RoundedButton.swift */,
 				55D153B3290A5A3900860720 /* ContainerView.swift */,
-				55FFB68829A4DD6200DB812D /* RequestAppointmentButton.swift */,
 				55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */,
 				5542B2E329AE0B250080B220 /* CustomTextField.swift */,
 				5542B2E529AE0D980080B220 /* CustomLongFormTextField.swift */,
@@ -380,7 +377,6 @@
 				55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */,
 				55D3C77C29989FB60073379C /* Codable+Extensions.swift in Sources */,
 				55E0C04829773702008FB508 /* MessageViewController.swift in Sources */,
-				55FFB68929A4DD6200DB812D /* RequestAppointmentButton.swift in Sources */,
 				55D3C77A299892CA0073379C /* MenuView.swift in Sources */,
 				55D3C7852998C39A0073379C /* AppointmentCellView.swift in Sources */,
 				55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */,

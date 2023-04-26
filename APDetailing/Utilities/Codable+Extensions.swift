@@ -24,3 +24,19 @@ extension Decodable {
         return try? JSONDecoder().decode(Self.self, from: data)
     }
 }
+
+extension Dictionary {
+    var jsonString: String {
+        let invalidJson = "Invalid JSON"
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return String(data: jsonData, encoding: String.Encoding.utf8) ?? invalidJson
+        } catch {
+            return invalidJson
+        }
+    }
+    
+    func printJSONString() {
+        print(jsonString)
+    }
+}
