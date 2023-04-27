@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestore
 
 @MainActor class ContentViewModel: ObservableObject {
@@ -25,7 +26,9 @@ import FirebaseFirestore
     func fetchAppointment(_ id: String) async {
         Networking.shared.isShowingLoadingIndicator = true
         guard let apptData = try? await Firestore.firestore().collection("Appointments").document(id).getDocument().data() else { return }
-        deepLinkAppt = Appointment.decode(dictionary: apptData)
+        var appt = Appointment.decode(dictionary: apptData)
+        appt?.id = id
+        deepLinkAppt = appt
         Networking.shared.isShowingLoadingIndicator = false
     }
 }

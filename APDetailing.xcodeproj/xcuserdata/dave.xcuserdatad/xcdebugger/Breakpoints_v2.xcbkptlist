@@ -5,35 +5,235 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "501DF723-941A-418E-A83F-CE9280E94B27"
+            uuid = "1CC81DE0-8F03-4351-9E5B-FD1380F5840B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APDetailing/App/APDetailingApp.swift"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DB2251C-5848-44DE-B0E0-8CD32A9467BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Appointments/RequestUpdateApptViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "userNotificationCenter(_:didReceive:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "requestAppointment()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "63514EEB-42C5-4F3A-81E4-D3E74A340CD4"
+            uuid = "B2513197-5CFC-421B-BB5A-FC35B86A14B2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APDetailing/Login/LogoutDeleteAcctViewModel.swift"
+            filePath = "APDetailing/Networking/Networking+Appointments.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "logOut()"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "fetchUserAppointments()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B2513197-5CFC-421B-BB5A-FC35B86A14B2 - c77fd7a5718dbf98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "B2513197-5CFC-421B-BB5A-FC35B86A14B2 - cc03a0fcab7b039a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1092">
+               </Location>
+               <Location
+                  uuid = "B2513197-5CFC-421B-BB5A-FC35B86A14B2 - dff6540640156595"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Networking/Networking+Appointments.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fetchUserAppointments()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C - c77fd7a5718dbffb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C - 7974532e952fb6e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C - cc03a0fcab7b03f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C - daa06d53ed30c7f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "4BF1F6FD-B231-45E9-A34E-F7B2A2127D7C - dff65406401565f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B6A4EF2-E8B5-44C0-A1AE-C6FF17BCD5AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Networking/Networking+Appointments.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fetchUserAppointments()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0B6A4EF2-E8B5-44C0-A1AE-C6FF17BCD5AA - cc03a0fcab7b043f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "0B6A4EF2-E8B5-44C0-A1AE-C6FF17BCD5AA - dff6540640156230"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for static APDetailing.Networking.fetchUserAppointments() async -&gt; Swift.Optional&lt;APDetailing.AppointmentError&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Networking/Networking+Appointments.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -20,8 +20,8 @@ import Foundation
         return menu?.detailPackages
     }
     
-    var aLaCarte: [ALaCarteItem]? {
-        return menu?.aLaCarte
+    var addOns: [AddOn]? {
+        return menu?.addOns
     }
     
     var basicServices: BasicServices? {

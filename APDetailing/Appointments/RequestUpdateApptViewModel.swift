@@ -20,10 +20,11 @@ enum AppointmentError: Error {
 }
 
 @MainActor class RequestUpdateApptViewModel: NSObject, ObservableObject {
-    var id: String = ""
+    var id: String
     @Published var name: String = ""
     @Published var phone: String = User.shared.userID?.formatPhoneNumber() ?? ""
     @Published var package: DetailPackage = .fullDetailPackage
+    @Published var addOns: [AddOn] = []
     @Published var date: Date = Date() + .day
     @Published var timeOfDay: TimeOfDay?
     @Published var location: String = ""
@@ -60,16 +61,18 @@ enum AppointmentError: Error {
                     location: location,
                     carDescription: carDescription,
                     package: package,
+                    addOns: addOns,
                     status: status)
     }
     
     init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
+        self.id = appt?.id ?? UUID().uuidString
         super.init()
         if let appt = appt {
-            self.id = appt.id ?? ""
             self.name = appt.name ?? ""
             self.phone = appt.phone ?? ""
             self.package = appt.package ?? selectedPackage
+            self.addOns = appt.addOns ?? []
             self.date = appt.date ?? Date() + .day
             self.timeOfDay = TimeOfDay(rawValue: appt.timeOfDay ?? "")
             self.location = appt.location ?? ""
@@ -92,7 +95,6 @@ enum AppointmentError: Error {
     }
     
     func requestAppointment() async {
-        print("tap")
         guard appt.validateAppt() else {
             invalidAppointment = true
             return

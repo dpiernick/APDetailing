@@ -9,8 +9,8 @@ import Foundation
 
 struct DetailMenuObject: Codable {
     var detailPackages: [DetailPackage]?
-    var aLaCarte: [ALaCarteItem]?
     var basicServices: BasicServices?
+    var addOns: [AddOn]
 }
 
 struct DetailPackage: Codable, Hashable, Identifiable {
@@ -50,7 +50,17 @@ struct BasicServices: Codable {
     var interiorServices: [String]?
 }
 
-struct ALaCarteItem: Codable {
+struct AddOn: Codable, Hashable {
     var name: String?
     var price: Int?
+    
+    var nameAndPriceString: String? {
+        if let name = name, let price = price {
+            return "\(name) - $\(price)"
+        } else if let name = name {
+            return name
+        } else {
+            return nil
+        }
+    }
 }

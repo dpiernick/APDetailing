@@ -11,35 +11,27 @@ import Firebase
 extension Networking {
     static func fetchMenu() async {
         DetailMenu.shared.showingLaunchScreen = true
-        let basicServices: BasicServices? = await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("BasicDetailPackageServices").document("BasicServices").getDocument { doc, error in
-                guard error == nil, let basic = BasicServices.decode(dictionary: doc?.data() ?? [:]) else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-                
-                continuation.resume(returning: basic)
-            }
-        })
+        async let basicServicesDoc = try? await Firestore.firestore().collection("BasicDetailPackageServices").document("BasicServices").getDocument()
+        async let detailPackageDocs = try? await Firestore.firestore().collection("DetailPackages").getDocuments()
+        async let addOnDoc = try? await Firestore.firestore().collection("AddOns").getDocuments()
         
-        let detailPackages: [DetailPackage]? = await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("DetailPackages").getDocuments { snapshot, error in
-                guard error == nil else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-                
-                var packages = [DetailPackage]()
-                for doc in snapshot?.documents ?? [] {
-                    guard let package = DetailPackage.decode(dictionary: doc.data()) else { return }
-                    packages.append(package)
-                }
-                
-                continuation.resume(returning: packages)
-            }
-        })
+        let basicServices = BasicServices.decode(dictionary: await basicServicesDoc?.data() ?? [:])
         
-        DetailMenu.shared.menu = DetailMenuObject(detailPackages: detailPackages, basicServices: basicServices)
+        var detailPackages = [DetailPackage]()
+        for doc in await detailPackageDocs?.documents ?? [] {
+            if let package = DetailPackage.decode(dictionary: doc.data()) {
+                detailPackages.append(package)
+            }
+        }
+        
+        var addOns = [AddOn]()
+        for doc in await addOnDoc?.documents ?? [] {
+            if let addOn = AddOn.decode(dictionary: doc.data()) {
+                addOns.append(addOn)
+            }
+        }
+                        
+        DetailMenu.shared.menu = DetailMenuObject(detailPackages: detailPackages, basicServices: basicServices, addOns: addOns)
         DetailMenu.shared.showingLaunchScreen = false
     }
 }

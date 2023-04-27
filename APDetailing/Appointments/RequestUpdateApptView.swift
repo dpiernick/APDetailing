@@ -18,6 +18,7 @@ struct RequestUpdateApptView: View {
     @StateObject var user = User.shared
     @StateObject var viewModel: RequestUpdateApptViewModel
     @State var isLocationFocused: Bool = false
+    var spacing: CGFloat = 10
     
     init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
         _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, menu: menu, isEditing: isEditing, completion: completion))
@@ -28,27 +29,36 @@ struct RequestUpdateApptView: View {
             ZStack {
                 ScrollView {
                     VStack {
-                        VStack {
+                        VStack(alignment: .leading, spacing: spacing) {
                             
                             CustomTextField("Name", text: $viewModel.name)
-                                .padding(.bottom, 4)
                             
                             CustomTextField("Phone", text: $viewModel.phone)
                                 .keyboardType(.numberPad)
                                 .textContentType(.telephoneNumber)
-                                .padding(.bottom, 4)
                                 .onChange(of: viewModel.phone) { _ in
                                     viewModel.phone = viewModel.phone.formatPhoneNumber()
                                 }
                             
-                            DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
-                                .padding(.bottom, 4)
-                            
-                            CustomLongFormTextField("Car Description", text: $viewModel.carDescription)
-                                .padding(.bottom, 4)
-                            
                             LocationSuggestionTextField(viewModel: viewModel, isFocused: isLocationFocused)
 
+                            CustomLongFormTextField("Car Description", text: $viewModel.carDescription)
+                            
+                            DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
+                                                        
+                            AddOnChecklist(selectedAddOns: $viewModel.addOns)
+                            
+                            if let totalPrice = viewModel.appt.totalApptPrice,
+                               totalPrice > 0 {
+                                HStack {
+                                    Spacer()
+                                    Text("Total: $\(totalPrice)")
+                                        .padding(spacing)
+                                        .font(.title)
+                                        .bold()
+                                }
+                            }
+                            
                             DatePicker("Appointment Date",
                                        selection: $viewModel.date,
                                        in: Date.now.addingTimeInterval(.day)...Date.now.addingTimeInterval(.week * 8),

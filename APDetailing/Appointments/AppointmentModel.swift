@@ -19,14 +19,16 @@ struct Appointment: Codable, Identifiable, Hashable {
     var location: String?
     var carDescription: String?
     var package: DetailPackage?
+    var addOns: [AddOn]?
     var status: AppointmentStatus?
     
-    var statusString: String {
-        switch status {
-        case .confirmed: return "Confirmed"
-        case .completed: return "Completed"
-        case .cancelled: return "Cancelled"
-        default: return "Requested"
+    var addOnsPrice: Int? { return addOns?.compactMap({ $0.price ?? 0 }).reduce(0, +) }
+    
+    var totalApptPrice: Int? {
+        if let packagePrice = package?.price, let addOnsPrice = addOnsPrice {
+            return packagePrice + addOnsPrice
+        } else {
+            return nil
         }
     }
     
@@ -57,19 +59,20 @@ struct Appointment: Codable, Identifiable, Hashable {
                \(name ?? "") - \(phone ?? "")
                \(location ?? "")
                \(package?.nameAndPriceString ?? "")
+               \((addOns ?? [AddOn]()).compactMap({ $0.name }).joined())
                \(carDescription!)
                """
     }
 }
 
 enum AppointmentStatus: String, Codable {
-    case requested
-    case confirmed
-    case completed
-    case cancelled
+    case requested = "Requested"
+    case confirmed = "Confirmed"
+    case completed = "Completed"
+    case cancelled = "Cancelled"
 }
 
 extension Appointment {
-    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, status: .requested)
-    static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, status: .completed)
+    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .requested)
+    static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .completed)
 }

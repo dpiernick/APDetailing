@@ -36,7 +36,7 @@ struct AppointmentCellDetailView: View {
                     VStack {
                         VStack(alignment: .leading) {
                             HStack {
-                                Text(viewModel.appt.statusString).foregroundColor(viewModel.appt.statusStringColor)
+                                Text(viewModel.appt.status?.rawValue ?? "").foregroundColor(viewModel.appt.statusStringColor)
                                 Text("- \(viewModel.appt.timeOfDay!)")
                             }
                             Text(viewModel.appt.package?.nameAndPriceString ?? "")
@@ -55,25 +55,58 @@ struct AppointmentCellDetailView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        Text("Name:").foregroundColor(.gray)
-                        Text(viewModel.appt.name!)
+                    if let addOns = viewModel.appt.addOns,
+                       addOns.isEmpty == false,
+                       let addOnsString = addOns.compactMap({ $0.name }).joined(),
+                       let addOnsPrice = viewModel.appt.addOnsPrice {
+                        HStack(alignment: .top) {
+                            Text("Add Ons:").foregroundColor(.gray)
+                            Text(addOnsString)
+                        }
+                        
+                        HStack(alignment: .top) {
+                            Text("Add Ons Price:").foregroundColor(.gray)
+                            Text("$\(addOnsPrice)")
+                        }
                     }
-                    HStack(alignment: .top) {
-                        Text("Phone:").foregroundColor(.gray)
-                        Text(viewModel.appt.phone!)
-                    }
-                    HStack(alignment: .top) {
-                        Text("Car:").foregroundColor(.gray)
-                        Text(viewModel.appt.carDescription!)
-                    }
-                    .padding(.bottom, 20)
                     
+                    if let car = viewModel.appt.carDescription {
+                        HStack(alignment: .top) {
+                            Text("Car:").foregroundColor(.gray)
+                            Text(car)
+                        }
+                    }
+                }
+                
+                if let totalPrice = viewModel.appt.totalApptPrice {
+                    HStack {
+                        Text("Total:").foregroundColor(.gray)
+                        Text("$\(totalPrice)")
+                    }
+                    .font(.title2)
+                }
+                 
+                VStack(alignment: .leading) {
+                    if let name = viewModel.appt.name {
+                        HStack(alignment: .top) {
+                            Text("Name:").foregroundColor(.gray)
+                            Text(name)
+                        }
+                    }
+                    
+                    if let phone = viewModel.appt.phone {
+                        HStack(alignment: .top) {
+                            Text("Phone:").foregroundColor(.gray)
+                            Text(phone)
+                        }
+                    }
+                }
+                    
+                VStack(spacing: 10) {
                     if User.shared.isAdmin == false {
                         Text("Contact AP Detailing")
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    
                     HStack {
                         RoundedButton(title: "Call", type: .secondary) { viewModel.call() }
                         RoundedButton(title: "Text", type: .secondary) { viewModel.showingMessageUI = true }
@@ -82,6 +115,7 @@ struct AppointmentCellDetailView: View {
                             }
                     }
                 }
+
                 
                 if User.shared.isAdmin {
                     VStack(spacing: 20) {

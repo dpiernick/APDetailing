@@ -58,6 +58,8 @@ extension Networking {
     }
     
     static func requestAppointment(appt: Appointment) async -> AppointmentError? {
+        guard let data = appt.jsonDictionary else { return .submitError }
+        
         var appt = appt
         if let userID = User.shared.userID {
             appt.userID = userID
@@ -66,59 +68,31 @@ extension Networking {
         }
 
         shared.isShowingLoadingIndicator = true
-        let requestSuccess = await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("Appointments").addDocument(data: appt.jsonDictionary!) { error in
-                guard error == nil else {
-                    continuation.resume(returning: false)
-                    return
-                }
-                continuation.resume(returning: true)
-            }
-        })
+        guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).setData(data) else { return .submitError }
+        guard let _ = await fetchAppointments() else { return .fetchError }
         shared.isShowingLoadingIndicator = false
-        
-        if requestSuccess {
-            return await fetchAppointments()
-        } else {
-            return .submitError
-        }
+
+        return nil
     }
     
     static func updateAppointment(appt: Appointment) async -> AppointmentError? {
+        guard let json = appt.jsonDictionary else { return .updateError }
+        
         shared.isShowingLoadingIndicator = true
-        let updateSuccess = await withCheckedContinuation({ continuation in
-            guard let id = appt.id, let json = appt.jsonDictionary else {
-                continuation.resume(returning: false)
-                return
-            }
-
-            Firestore.firestore().collection("Appointments").document(id).updateData(json) { error in
-                continuation.resume(returning: error == nil)
-            }
-        })
+        guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).updateData(json) else { return .submitError }
+        guard let _ = await fetchAppointments() else { return .fetchError }
         shared.isShowingLoadingIndicator = false
         
-        if updateSuccess {
-            return await fetchAppointments()
-        } else {
-            return .updateError
-        }
+        return nil
     }
     
     static func updateAppointmentStatus(apptID: String, status: AppointmentStatus) async -> AppointmentError? {
         shared.isShowingLoadingIndicator = true
-        let updateSuccess = await withCheckedContinuation({ continuation in
-            Firestore.firestore().collection("Appointments").document(apptID).updateData(["status": status.rawValue]) { error in
-                continuation.resume(returning: error == nil)
-            }
-        })
+        guard let _ = try? await Firestore.firestore().collection("Appointments").document(apptID).updateData(["status": status.rawValue]) else { return .submitError }
+        guard let _ = await fetchAppointments() else { return .fetchError }
         shared.isShowingLoadingIndicator = false
         
-        if updateSuccess {
-            return await fetchAppointments()
-        } else {
-            return .updateError
-        }
+        return nil
     }
     
     static func deleteAllAppointments() async -> NetworkingError? {
