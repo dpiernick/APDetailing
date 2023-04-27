@@ -69,7 +69,7 @@ extension Networking {
 
         shared.isShowingLoadingIndicator = true
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).setData(data) else { return .submitError }
-        guard let _ = await fetchAppointments() else { return .fetchError }
+        guard (await fetchAppointments()) == nil else { return .fetchError }
         shared.isShowingLoadingIndicator = false
 
         return nil
@@ -80,7 +80,7 @@ extension Networking {
         
         shared.isShowingLoadingIndicator = true
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).updateData(json) else { return .submitError }
-        guard let _ = await fetchAppointments() else { return .fetchError }
+        guard (await fetchAppointments()) == nil else { return .fetchError }
         shared.isShowingLoadingIndicator = false
         
         return nil
@@ -89,7 +89,7 @@ extension Networking {
     static func updateAppointmentStatus(apptID: String, status: AppointmentStatus) async -> AppointmentError? {
         shared.isShowingLoadingIndicator = true
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(apptID).updateData(["status": status.rawValue]) else { return .submitError }
-        guard let _ = await fetchAppointments() else { return .fetchError }
+        guard (await fetchAppointments()) == nil else { return .fetchError }
         shared.isShowingLoadingIndicator = false
         
         return nil

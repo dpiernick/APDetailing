@@ -57,11 +57,10 @@ struct AppointmentCellDetailView: View {
                 VStack(alignment: .leading) {
                     if let addOns = viewModel.appt.addOns,
                        addOns.isEmpty == false,
-                       let addOnsString = addOns.compactMap({ $0.name }).joined(),
                        let addOnsPrice = viewModel.appt.addOnsPrice {
                         HStack(alignment: .top) {
                             Text("Add Ons:").foregroundColor(.gray)
-                            Text(addOnsString)
+                            Text("\(addOns.count) Selected")
                         }
                         
                         HStack(alignment: .top) {

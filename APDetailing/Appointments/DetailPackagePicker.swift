@@ -39,6 +39,8 @@ struct DetailPackagePicker: View {
                 Spacer()
                 Image(systemName: "chevron.up.chevron.down")
                     .foregroundColor(.white)
+                    .font(.title3)
+                    .padding(.trailing, 8)
             }
             .padding(8)
             .overlay(content: {

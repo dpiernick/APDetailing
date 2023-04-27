@@ -23,31 +23,34 @@ struct AddOnChecklist: View {
                 VStack(alignment: .leading) {
                     Text("Add Ons")
                         .foregroundColor(Color(UIColor.placeholderText))
-                        .padding(.bottom, 4)
                     
-                    if selectedAddOns.count > 0 {
-                        Text("\(selectedAddOns.count) Selected - $\(viewModel.selectedAddOns.compactMap({ $0.price ?? 0 }).reduce(0, +))")
+                    HStack {
+                        Text("\(selectedAddOns.count) Selected")
                             .font(.title2)
+                        
+                        if selectedAddOns.count > 0 {
+                            Text(" - $\(viewModel.selectedAddOns.compactMap({ $0.price ?? 0 }).reduce(0, +))")
+                                .font(.title2)
+                        }
                     }
                 }
-                
                 
                 Spacer()
                 
                 Image(systemName: "chevron.up")
                     .font(.title3)
-                    .bold()
                     .rotationEffect(isExpanded ? .init(degrees: 180) : .zero, anchor: .center)
-                    .padding(.trailing)
-                    .onTapGesture {
-                        withAnimation {
-                            isExpanded.toggle()
-                        }
-                    }
+                    .padding(.trailing, 8)
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    isExpanded.toggle()
+                }
             }
             
             if isExpanded {
-                ForEach(viewModel.allAddOns ?? [], id: \.self) { addOn in
+                ForEach(viewModel.allAddOns, id: \.self) { addOn in
                     HStack {
                         Image(systemName: selectedAddOns.contains(addOn) ? "checkmark.square.fill" : "square")
                             .resizable()
