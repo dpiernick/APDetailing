@@ -51,6 +51,7 @@
 		55E0C04829773702008FB508 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04729773702008FB508 /* MessageViewController.swift */; };
 		55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04929773C4D008FB508 /* MessageUIView.swift */; };
 		55E4560C29F8D72B00D703A8 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */; };
+		55ECBB832A05832C00E1DCBC /* AddOnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECBB822A05832C00E1DCBC /* AddOnsView.swift */; };
 		55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68429A3429300DB812D /* Networking+Appointments.swift */; };
 		55FFB68729A342D000DB812D /* Networking+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68629A342D000DB812D /* Networking+Login.swift */; };
 		55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */; };
@@ -102,6 +103,7 @@
 		55E0C04729773702008FB508 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		55E0C04929773C4D008FB508 /* MessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIView.swift; sourceTree = "<group>"; };
 		55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
+		55ECBB822A05832C00E1DCBC /* AddOnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsView.swift; sourceTree = "<group>"; };
 		55FFB68429A3429300DB812D /* Networking+Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Appointments.swift"; sourceTree = "<group>"; };
 		55FFB68629A342D000DB812D /* Networking+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Login.swift"; sourceTree = "<group>"; };
 		55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSuggestionTextField.swift; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 				55839A15299AFE1B00715991 /* Info.plist */,
 				55AF3B9A290A7FE000DE2C79 /* App */,
 				55FFB68329A3426200DB812D /* Networking */,
-				55AF3B9C290A805500DE2C79 /* Services */,
+				55AF3B9C290A805500DE2C79 /* Menu */,
 				55D3C77E2998AA150073379C /* Appointments */,
 				5542B2DA29ADE5510080B220 /* Contact */,
 				55D3C77629987EB50073379C /* Login */,
@@ -223,15 +225,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		55AF3B9C290A805500DE2C79 /* Services */ = {
+		55AF3B9C290A805500DE2C79 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				55D3C779299892CA0073379C /* MenuView.swift */,
 				55FFB69029A73C5000DB812D /* MenuViewModel.swift */,
 				558D3D0028FF28A70068977A /* DetailPackageView.swift */,
 				558D3D0228FF28C60068977A /* DetailMenuModels.swift */,
+				55ECBB822A05832C00E1DCBC /* AddOnsView.swift */,
 			);
-			path = Services;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		55D3C77629987EB50073379C /* Login */ = {
@@ -388,6 +391,7 @@
 				55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */,
 				55D3C77C29989FB60073379C /* Codable+Extensions.swift in Sources */,
 				55E0C04829773702008FB508 /* MessageViewController.swift in Sources */,
+				55ECBB832A05832C00E1DCBC /* AddOnsView.swift in Sources */,
 				55D3C77A299892CA0073379C /* MenuView.swift in Sources */,
 				55D3C7852998C39A0073379C /* AppointmentCellView.swift in Sources */,
 				55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */,

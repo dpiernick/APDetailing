@@ -75,7 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let userInfo = response.notification.request.content.userInfo
         Messaging.messaging().appDidReceiveMessage(userInfo)
         if let apptID = userInfo["apptID"] as? String {
-            print("set DLR appt")
             DeepLinkRouter.shared.deepLinkView = .appointment(id: apptID)
         }
     }

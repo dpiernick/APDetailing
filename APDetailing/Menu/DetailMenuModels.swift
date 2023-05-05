@@ -53,6 +53,7 @@ struct BasicServices: Codable {
 struct AddOn: Codable, Hashable {
     var name: String?
     var price: Int?
+    var type: AddOnType?
     
     var nameAndPriceString: String? {
         if let name = name, let price = price {
@@ -63,4 +64,9 @@ struct AddOn: Codable, Hashable {
             return nil
         }
     }
+}
+
+enum AddOnType: String, Codable {
+    case exterior
+    case interior
 }

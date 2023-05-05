@@ -114,9 +114,7 @@ extension Networking {
             var results = [Bool]()
             for await individualResult in group {
                 results.append(individualResult)
-                print(individualResult)
             }
-            print(results)
             return results
         }
         return deleteResults.allSatisfy({$0}) ? nil : .error

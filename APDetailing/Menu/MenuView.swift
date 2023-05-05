@@ -11,15 +11,25 @@ import SwiftUI
 struct MenuView: View {
     @ObservedObject var menu = DetailMenu.shared
     @StateObject var viewModel = MenuViewModel()
-    @State var selectedPackage: DetailPackage = .inOutDetailPackage
+    @State var selectedTab: Int = 0 {
+        didSet {
+            
+        }
+    }
+    
+    var selectedPackage: DetailPackage { menu.detailPackages?.filter({ $0.id == selectedTab }).first ??  .inOutDetailPackage }
     
     var body: some View {
-        TabView(selection: $selectedPackage) {
+        TabView(selection: $selectedTab) {
             ForEach(menu.detailPackages ?? []) { package in
                 DetailPackageView(package: package, basicServices: menu.basicServices ?? BasicServices())
-                    .tag(package)
+                    .tag(package.id ?? 0)
             }
             .padding(.bottom, 30)
+            
+            AddOnsView(addOns: menu.addOns ?? [])
+                .tag(99)
+                .padding(.bottom, 30)
         }
         .tabViewStyle(.page)
         .safeAreaInset(edge: .bottom) {
