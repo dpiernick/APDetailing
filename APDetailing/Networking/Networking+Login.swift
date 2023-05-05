@@ -52,4 +52,7 @@ extension Networking {
         }
     }
 
+    static func deleteUser() async -> NetworkingError? {
+        return try? await Auth.auth().currentUser?.delete() == nil ? nil : .error
+    }
 }

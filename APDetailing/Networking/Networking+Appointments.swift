@@ -96,7 +96,7 @@ extension Networking {
     }
     
     static func deleteAllAppointments() async -> NetworkingError? {
-        guard let userID = User.shared.userID, User.shared.isAdmin == false else { return .error }
+        guard let userID = User.shared.userID, User.shared.isAdmin == false else { return .adminDelete }
         guard let query = try? await Firestore.firestore().collection("Appointments").whereField("userID", isEqualTo: userID).getDocuments() else { return nil }
         
         var apptIDs = [String]()

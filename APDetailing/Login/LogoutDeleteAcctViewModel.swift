@@ -10,16 +10,24 @@ import Firebase
 
 @MainActor class LogoutDeleteAcctViewModel: ObservableObject {
     @Published var showConfirmDeleteAcctAndAppts = false
+    @Published var isShowingAdminDeleteError = false
+    @Published var isShowingNetworkingError = false
+    
     var completion: () -> Void
     
     init(completion: @escaping () -> Void) {
         self.completion = completion
     }
     
-    func deleteAccountAndAppointments() async -> NetworkingError? {
-        let success = await Networking.deleteAllAppointments()
-        logOut()
-        return success
+    func deleteAccountAndAppointments() async {
+        guard User.shared.isAdmin == false else {
+            isShowingAdminDeleteError = true
+            return
+        }
+
+        let deleteApptsSuccess = await Networking.deleteAllAppointments() == nil
+        let deleteUserSuccess = await Networking.deleteUser() == nil
+        isShowingNetworkingError = !(deleteApptsSuccess && deleteUserSuccess)
     }
     
     func logOut() {

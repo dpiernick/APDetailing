@@ -34,8 +34,9 @@ enum AppointmentError: Error {
     var menu: DetailMenuObject? = nil
     
     @Published var invalidAppointment = false
+    @Published var isShowingTimeError = false
     @Published var isShowingLogin = false
-    @Published var isShowingSubmitError = false
+    @Published var isShowingRequestError = false
     @Published var isShowingUpdateError = false
     @Published var isShowingFetchError = false
     @Published var isShowingMessageUI = false
@@ -97,6 +98,11 @@ enum AppointmentError: Error {
     func requestAppointment() async {
         guard appt.validateAppt() else {
             invalidAppointment = true
+            return
+        }
+        
+        guard appt.timeOfDay != nil else {
+            isShowingTimeError = true
             return
         }
         

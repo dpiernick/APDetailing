@@ -10,6 +10,7 @@
 		5514FEF0297743E500A95E77 /* RequestUpdateApptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */; };
 		5514FEF2297883BC00A95E77 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF1297883BC00A95E77 /* String+Extensions.swift */; };
 		5514FEF62988CEC000A95E77 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF52988CEC000A95E77 /* Networking.swift */; };
+		553A4F002A00AF15008E87F7 /* TimeOfDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */; };
 		5540C7D029F70D1F00463625 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7CF29F70D1F00463625 /* FirebaseFunctions */; };
 		5540C7D229F70D2700463625 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7D129F70D2700463625 /* FirebaseMessaging */; };
 		5540C7D429F71D4E00463625 /* Networking+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540C7D329F71D4E00463625 /* Networking+Admin.swift */; };
@@ -22,7 +23,6 @@
 		5542B2E029ADF4AA0080B220 /* DetailMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2DF29ADF4AA0080B220 /* DetailMenu.swift */; };
 		5542B2E229ADF65A0080B220 /* WebHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2E129ADF65A0080B220 /* WebHelper.swift */; };
 		5542B2E429AE0B250080B220 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2E329AE0B250080B220 /* CustomTextField.swift */; };
-		5542B2E629AE0D980080B220 /* CustomLongFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542B2E529AE0D980080B220 /* CustomLongFormTextField.swift */; };
 		55839A14299ACDBF00715991 /* AppointmentCellDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55839A13299ACDBF00715991 /* AppointmentCellDetailView.swift */; };
 		558C165A299B778000964B3A /* CallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558C1659299B778000964B3A /* CallHelper.swift */; };
 		558C96FA299DED5600BD9D05 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558C96F9299DED5600BD9D05 /* LoginViewModel.swift */; };
@@ -62,6 +62,7 @@
 		5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUpdateApptViewModel.swift; sourceTree = "<group>"; };
 		5514FEF1297883BC00A95E77 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		5514FEF52988CEC000A95E77 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayPicker.swift; sourceTree = "<group>"; };
 		5540C7D329F71D4E00463625 /* Networking+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Admin.swift"; sourceTree = "<group>"; };
 		5542B2D229AD61BD0080B220 /* AppointmentCellDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCellDetailViewModel.swift; sourceTree = "<group>"; };
 		5542B2D429AD6DFF0080B220 /* AppointmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewModel.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		5542B2DF29ADF4AA0080B220 /* DetailMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenu.swift; sourceTree = "<group>"; };
 		5542B2E129ADF65A0080B220 /* WebHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebHelper.swift; sourceTree = "<group>"; };
 		5542B2E329AE0B250080B220 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		5542B2E529AE0D980080B220 /* CustomLongFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLongFormTextField.swift; sourceTree = "<group>"; };
 		55839A13299ACDBF00715991 /* AppointmentCellDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCellDetailView.swift; sourceTree = "<group>"; };
 		55839A15299AFE1B00715991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		558C1659299B778000964B3A /* CallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelper.swift; sourceTree = "<group>"; };
@@ -187,9 +187,9 @@
 		55AF3B99290A7FCF00DE2C79 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				55AF3B9B290A800700DE2C79 /* Views */,
 				558C1658299B776100964B3A /* ContactHelpers */,
 				558D3CFE28FF287A0068977A /* TimeInterval+Extensions.swift */,
-				55AF3B9B290A800700DE2C79 /* Views */,
 				5514FEF1297883BC00A95E77 /* String+Extensions.swift */,
 				55D3C77B29989FB60073379C /* Codable+Extensions.swift */,
 			);
@@ -218,7 +218,7 @@
 				55D153B3290A5A3900860720 /* ContainerView.swift */,
 				55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */,
 				5542B2E329AE0B250080B220 /* CustomTextField.swift */,
-				5542B2E529AE0D980080B220 /* CustomLongFormTextField.swift */,
+				553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,8 +365,8 @@
 				55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */,
 				55FFB69329A73D6200DB812D /* Networking+Menu.swift in Sources */,
 				55D153B4290A5A3900860720 /* ContainerView.swift in Sources */,
+				553A4F002A00AF15008E87F7 /* TimeOfDayPicker.swift in Sources */,
 				5542B2E229ADF65A0080B220 /* WebHelper.swift in Sources */,
-				5542B2E629AE0D980080B220 /* CustomLongFormTextField.swift in Sources */,
 				558D3D0128FF28A70068977A /* DetailPackageView.swift in Sources */,
 				55D3C7812998AAA10073379C /* AppointmentsView.swift in Sources */,
 				558C165A299B778000964B3A /* CallHelper.swift in Sources */,

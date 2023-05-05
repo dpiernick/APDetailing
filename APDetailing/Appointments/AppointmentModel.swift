@@ -45,7 +45,6 @@ struct Appointment: Codable, Identifiable, Hashable {
         return (name.isNotNilAndNotEmpty &&
                 phone.isNotNilAndNotEmpty &&
                 date != nil &&
-                timeOfDay != nil &&
                 location.isNotNilAndNotEmpty &&
                 package != nil &&
                 carDescription.isNotNilAndNotEmpty)

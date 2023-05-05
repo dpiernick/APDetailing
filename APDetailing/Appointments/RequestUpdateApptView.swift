@@ -42,7 +42,7 @@ struct RequestUpdateApptView: View {
                             
                             LocationSuggestionTextField(viewModel: viewModel, isFocused: isLocationFocused)
 
-                            CustomLongFormTextField("Car Description", text: $viewModel.carDescription)
+                            CustomTextField("Car Description", text: $viewModel.carDescription, isLongForm: true)
                             
                             DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
                                                         
@@ -69,15 +69,8 @@ struct RequestUpdateApptView: View {
                                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             })
                             
-                            HStack {
-                                RoundedButton(title: "Morning", type: viewModel.timeOfDay == .morning ? .primary : .secondary) {
-                                    viewModel.timeOfDay = .morning
-                                }
-                                
-                                RoundedButton(title: "Afternoon", type: viewModel.timeOfDay == .afternoon ? .primary : .secondary) {
-                                    viewModel.timeOfDay = .afternoon
-                                }
-                            }
+                            TimeOfDayPicker(timeOfDay: $viewModel.timeOfDay)
+                            
                         }
                         .padding([.top, .leading, .trailing])
                         
@@ -102,15 +95,12 @@ struct RequestUpdateApptView: View {
                     }
                 }
                 .alert("Please fill in all required information", isPresented: $viewModel.invalidAppointment) {}
-                .alert("Something went wrong requesting your appointment, please try again.", isPresented: $viewModel.isShowingSubmitError) {}
+                .alert("Something went wrong requesting your appointment, please try again.", isPresented: $viewModel.isShowingRequestError) {}
                 .alert("Something went wrong updating your appointment, please try again.", isPresented: $viewModel.isShowingUpdateError) {}
-                .alert("Your appointment was submitted, but something went wrong updating the list", isPresented: $viewModel.isShowingSubmitError) {}
-                .alert("Invalid Address", isPresented: $viewModel.isShowingLocationError) {}
-                .alert(isPresented: $viewModel.distanceTooFar) {
-                    Alert(title: Text("We don't service this area"),
-                          message: Text("Currently only serving Detroit, MI and surrounding areas."),
-                          dismissButton: .cancel( { isLocationFocused = true } ))
-                    }
+                .alert("Your appointment was requested, but something went wrong updating the list", isPresented: $viewModel.isShowingFetchError) {}
+                .alert("Please enter a valid location", isPresented: $viewModel.isShowingLocationError) {}
+                .alert("Sorry, we currently only serve the Detroit Metro area", isPresented: $viewModel.distanceTooFar) {}
+                .alert("Please select a time of day", isPresented: $viewModel.isShowingTimeError) {}
                 
                 if user.isLoggedIn == false && viewModel.isShowingLogin {
                     LoginView(phone: viewModel.phone) { result in

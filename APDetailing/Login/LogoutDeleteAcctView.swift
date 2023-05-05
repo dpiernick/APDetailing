@@ -35,6 +35,8 @@ struct LogoutDeleteAcctView: View {
                                 Task { await viewModel.deleteAccountAndAppointments() }
                             }))
                 }
+                .alert("Admins can't delete all the appointments. Call Dave", isPresented: $viewModel.isShowingAdminDeleteError, actions: {})
+                .alert("Something went wrong", isPresented: $viewModel.isShowingAdminDeleteError, actions: {})
             }
             .padding()
         }

@@ -15,4 +15,5 @@ import Firebase
 
 enum NetworkingError: Error {
     case error
+    case adminDelete
 }

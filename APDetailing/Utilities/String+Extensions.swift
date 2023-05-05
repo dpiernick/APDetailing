@@ -20,16 +20,14 @@ extension String {
         // Remove any character that is not a number
         var numbersOnly = self.numbersOnly
         let length = numbersOnly.count
-                                 
-        if numbersOnly.hasPrefix("1") {
-            numbersOnly.removeFirst()
-            return numbersOnly.formatPhoneNumber()
-        }
         
         // Check for supported phone number length
-        if length > 10 {
+        if length > 10 && numbersOnly.hasPrefix("1") {
+            numbersOnly.removeFirst()
+            return numbersOnly.formatPhoneNumber()
+        } else if length > 10 {
             return String(numbersOnly.prefix(10)).formatPhoneNumber()
-        } else if length < 10 {
+        } else if length < 10 || (length == 10 && numbersOnly.hasPrefix("1")) {
             return numbersOnly
         }
         
