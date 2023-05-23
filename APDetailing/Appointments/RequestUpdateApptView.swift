@@ -50,13 +50,23 @@ struct RequestUpdateApptView: View {
                             
                             if let totalPrice = viewModel.appt.totalApptPrice,
                                totalPrice > 0 {
-                                HStack {
-                                    Spacer()
-                                    Text("Total: $\(totalPrice)")
-                                        .padding(spacing)
-                                        .font(.title)
-                                        .bold()
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        Text("Total: $\(totalPrice)*")
+                                            .font(.title)
+                                            .bold()
+                                            .padding(.bottom, 2)
+                                    }
+                                    
+                                    Text("*Note: Pricing may vary based on vehicle condition.")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                        .italic()
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
                                 }
+                                .padding(spacing)
                             }
                             
                             DatePicker("Appointment Date",
@@ -70,7 +80,6 @@ struct RequestUpdateApptView: View {
                             })
                             
                             TimeOfDayPicker(timeOfDay: $viewModel.timeOfDay)
-                            
                         }
                         .padding([.top, .leading, .trailing])
                         

@@ -72,6 +72,6 @@ enum AppointmentStatus: String, Codable {
 }
 
 extension Appointment {
-    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .requested)
+    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, addOns: [AddOn(name: "Add On 1", price: 50), AddOn(name: "Add On 2", price: 50)], status: .requested)
     static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .inOutDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .completed)
 }

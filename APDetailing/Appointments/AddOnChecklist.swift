@@ -52,10 +52,10 @@ struct AddOnChecklist: View {
             if isExpanded {
                 ForEach(viewModel.allAddOns, id: \.self) { addOn in
                     HStack {
-                        Image(systemName: selectedAddOns.contains(addOn) ? "checkmark.square.fill" : "square")
+                        Image(systemName: viewModel.addOnIsSelected(addOn) ? "checkmark.square.fill" : "square")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(selectedAddOns.contains(addOn) ? .red : .gray)
+                            .foregroundColor(viewModel.addOnIsSelected(addOn) ? .red : .gray)
                             .font(.system(size: 20, weight: .bold, design: .default))
                         
                         Text(addOn.nameAndPriceString ?? "")
@@ -95,7 +95,7 @@ struct AddOnChecklist: View {
     }
     
     func addOnIsSelected(_ addOn: AddOn) -> Bool {
-        selectedAddOns.contains(addOn)
+        selectedAddOns.compactMap({ $0.name }).contains(addOn.name)
     }
     
     func toggleSelectedAddOn(_ addOn: AddOn) -> [AddOn] {

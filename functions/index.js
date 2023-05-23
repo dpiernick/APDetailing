@@ -1,3 +1,6 @@
+//run "firebase deploy" in terminal to deploy file
+//logs - https://console.cloud.google.com/logs/query?project=ap-detailing
+
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);

@@ -21,6 +21,7 @@ enum AppointmentError: Error {
 
 @MainActor class RequestUpdateApptViewModel: NSObject, ObservableObject {
     var id: String
+    var userID: String = User.shared.userID ?? ""
     @Published var name: String = ""
     @Published var phone: String = User.shared.userID?.formatPhoneNumber() ?? ""
     @Published var package: DetailPackage = .fullDetailPackage
@@ -53,7 +54,7 @@ enum AppointmentError: Error {
     
     var appt: Appointment {
         Appointment(id: id,
-                    userID: User.shared.userID,
+                    userID: userID,
                     name: name,
                     phone: phone,
                     date: date,
@@ -70,6 +71,7 @@ enum AppointmentError: Error {
         self.id = appt?.id ?? UUID().uuidString
         super.init()
         if let appt = appt {
+            self.userID = appt.userID ?? User.shared.userID ?? ""
             self.name = appt.name ?? ""
             self.phone = appt.phone ?? ""
             self.package = appt.package ?? selectedPackage

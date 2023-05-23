@@ -58,7 +58,7 @@ struct LoginView: View {
             .padding()
             .preferredColorScheme(.dark)
             .alert("Please enter a phone number", isPresented: $viewModel.badPhoneNumber) {}
-            .alert("Something went wrong", isPresented: $viewModel.loginError) {}
+            .alert(viewModel.loginErrorMessage, isPresented: $viewModel.showingLoginError) {}
         }
     }
 }

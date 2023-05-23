@@ -9,13 +9,19 @@ import Foundation
 import Firebase
 import FirebaseMessaging
 
+enum LoginError: Error {
+    case badNumber
+    case verifyFailure
+    case signInError
+}
+
 extension Networking {
     
     //todo specify error
-    static func submitPhoneNumber(_ phone: String) async -> Bool {
+    static func submitPhoneNumber(_ phone: String) async -> LoginError? {
         let phoneNumber = "+1" + phone.numbersOnly
         guard phoneNumber.count == 12 else {
-            return false
+            return .badNumber
         }
         
         shared.isShowingLoadingIndicator = true
@@ -28,12 +34,12 @@ extension Networking {
         self.shared.isShowingLoadingIndicator = false
         
         UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-        return verificationID != nil
+        return verificationID != nil ? nil : .verifyFailure
     }
     
-    static func signIn(withCode code: String) async -> Bool {
+    static func signIn(withCode code: String) async -> Error? {
         guard let id = UserDefaults.standard.string(forKey: "authVerificationID") else {
-            return false
+            return LoginError.verifyFailure
         }
         
         shared.isShowingLoadingIndicator = true
@@ -41,14 +47,13 @@ extension Networking {
         let phoneNumber = try? (await Auth.auth().signIn(with: credential)).user.phoneNumber
         
         if let phoneNumber = phoneNumber {
-            await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)
-            
-            let success = await fetchAppointments() == nil
+            await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)            
             shared.isShowingLoadingIndicator = false
-            return success
+            return await fetchAppointments()
         } else {
+            print("no phone number error")
             shared.isShowingLoadingIndicator = false
-            return false
+            return LoginError.signInError
         }
     }
 

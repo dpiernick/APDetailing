@@ -57,6 +57,15 @@ struct AddOnsView: View {
                         .padding(.vertical, 1)
                         
                         Spacer()
+                        
+                        Text("Note: Pricing may vary based on vehicle condition.")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .italic()
+                            .padding(.top, 40)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        
                     }
                 }
             }

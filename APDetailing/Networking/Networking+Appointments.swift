@@ -58,7 +58,8 @@ extension Networking {
     }
     
     static func requestAppointment(appt: Appointment) async -> AppointmentError? {
-        guard let data = appt.jsonDictionary else { return .submitError }
+        guard let data = appt.jsonDictionary else {
+            return .submitError }
         
         var appt = appt
         if let userID = User.shared.userID {
@@ -68,8 +69,13 @@ extension Networking {
         }
 
         shared.isShowingLoadingIndicator = true
-        guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).setData(data) else { return .submitError }
-        guard (await fetchAppointments()) == nil else { return .fetchError }
+        guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).setData(data) else {
+            return .submitError
+        }
+        
+        guard (await fetchAppointments()) == nil else {
+            return .fetchError
+        }
         shared.isShowingLoadingIndicator = false
 
         return nil
