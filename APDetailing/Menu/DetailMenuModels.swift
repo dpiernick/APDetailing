@@ -25,7 +25,7 @@ struct DetailPackage: Codable, Hashable, Identifiable {
         if let price = price {
             return "\(name) - $\(price)"
         } else {
-            return "\(name) - Call For Pricing"
+            return "\(name)"
         }
     }
     
@@ -63,7 +63,7 @@ struct AddOn: Codable, Hashable {
         if let name = name, let price = price {
             return "\(name) - $\(price)"
         } else if let name = name {
-            return "\(name) - Call For Pricing"
+            return "\(name)"
         } else {
             return nil
         }
