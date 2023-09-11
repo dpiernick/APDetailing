@@ -21,8 +21,12 @@ struct DetailPackage: Codable, Hashable, Identifiable {
     var interiorServices: [String]?
     
     var nameAndPriceString: String? {
-        guard let name = name, let price = price else { return nil }
-        return "\(name) - $\(price)"
+        guard let name = name else { return nil }
+        if let price = price {
+            return "\(name) - $\(price)"
+        } else {
+            return "\(name) - Call For Pricing"
+        }
     }
     
     static let defaultPriceStrings = ["In & Out - $60",
@@ -59,7 +63,7 @@ struct AddOn: Codable, Hashable {
         if let name = name, let price = price {
             return "\(name) - $\(price)"
         } else if let name = name {
-            return name
+            return "\(name) - Call For Pricing"
         } else {
             return nil
         }

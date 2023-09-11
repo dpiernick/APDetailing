@@ -26,6 +26,7 @@
 		55839A14299ACDBF00715991 /* AppointmentCellDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55839A13299ACDBF00715991 /* AppointmentCellDetailView.swift */; };
 		558C165A299B778000964B3A /* CallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558C1659299B778000964B3A /* CallHelper.swift */; };
 		558C96FA299DED5600BD9D05 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558C96F9299DED5600BD9D05 /* LoginViewModel.swift */; };
+		558CBF5D2AAEBBE700714351 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558CBF5C2AAEBBE700714351 /* Optional+Extensions.swift */; };
 		558D3CEF28FF26700068977A /* APDetailingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D3CEE28FF26700068977A /* APDetailingApp.swift */; };
 		558D3CF128FF26700068977A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558D3CF028FF26700068977A /* ContentView.swift */; };
 		558D3CF328FF26710068977A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558D3CF228FF26710068977A /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		558C1659299B778000964B3A /* CallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelper.swift; sourceTree = "<group>"; };
 		558C96F8299DE40100BD9D05 /* APDetailing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = APDetailing.entitlements; sourceTree = "<group>"; };
 		558C96F9299DED5600BD9D05 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		558CBF5C2AAEBBE700714351 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		558D3CEB28FF26700068977A /* APDetailing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APDetailing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558D3CEE28FF26700068977A /* APDetailingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APDetailingApp.swift; sourceTree = "<group>"; };
 		558D3CF028FF26700068977A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				558D3CFE28FF287A0068977A /* TimeInterval+Extensions.swift */,
 				5514FEF1297883BC00A95E77 /* String+Extensions.swift */,
 				55D3C77B29989FB60073379C /* Codable+Extensions.swift */,
+				558CBF5C2AAEBBE700714351 /* Optional+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -310,7 +313,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					558D3CEA28FF26700068977A = {
@@ -372,6 +375,7 @@
 				5542B2E229ADF65A0080B220 /* WebHelper.swift in Sources */,
 				558D3D0128FF28A70068977A /* DetailPackageView.swift in Sources */,
 				55D3C7812998AAA10073379C /* AppointmentsView.swift in Sources */,
+				558CBF5D2AAEBBE700714351 /* Optional+Extensions.swift in Sources */,
 				558C165A299B778000964B3A /* CallHelper.swift in Sources */,
 				55839A14299ACDBF00715991 /* AppointmentCellDetailView.swift in Sources */,
 				5514FEF0297743E500A95E77 /* RequestUpdateApptViewModel.swift in Sources */,
