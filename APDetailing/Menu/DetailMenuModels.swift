@@ -29,22 +29,13 @@ struct DetailPackage: Codable, Hashable, Identifiable {
         }
     }
     
-    static let defaultPriceStrings = ["In & Out - $60",
-                       "Deluxe - $90",
-                       "Platinum - $125",
-                       "Full - $190",
-                       "Extreme - $290",
-                       "Exclusive - $390"]
-    
-    static let inOutDetailPackage = DetailPackage(id: 1,
-                                                 name: "In & Out",
-                                                 price: 60,
-                                                 exteriorServices: ["Foam Cannon Wash", "Complete Wax & Clear Coat Sealant", "Wheels Polished", "Tires Shined"],
-                                                 interiorServices: ["Glass Cleaned", "Door Jambs, Panels & Dash Wiped", "Deep Vacuum"])
+    static let defaultPriceStrings = ["Full - $1225",
+                       "Extreme - $390",
+                       "Exclusive - $490"]
     
     static let fullDetailPackage = DetailPackage(id: 3,
                                                  name: "Full Detail",
-                                                 price: 190,
+                                                 price: 225,
                                                  exteriorServices: ["Foam Cannon Wash", "Complete Wax & Clear Coat Sealant", "Wheels Polished", "Tires Shined", "Engine Detailed", "Undercarriage Steam Cleaned"],
                                                  interiorServices: ["Glass Cleaned", "Door Jambs, Panels & Dash Wiped", "Deep Vacuum", "Leather Conditioned", "Carpets & Seats Shampoo'd"])
 }

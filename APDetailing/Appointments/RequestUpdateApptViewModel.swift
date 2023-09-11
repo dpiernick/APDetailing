@@ -24,7 +24,7 @@ enum AppointmentError: Error {
     var userID: String = User.shared.userID ?? ""
     @Published var name: String = ""
     @Published var phone: String = User.shared.userID?.formatPhoneNumber() ?? ""
-    @Published var package: DetailPackage = .fullDetailPackage
+    @Published var package: DetailPackage?
     @Published var addOns: [AddOn] = []
     @Published var date: Date = Date() + .day
     @Published var timeOfDay: TimeOfDay?
@@ -67,14 +67,14 @@ enum AppointmentError: Error {
                     status: status)
     }
     
-    init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, menu: DetailMenuObject? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
         self.id = appt?.id ?? UUID().uuidString
         super.init()
         if let appt = appt {
             self.userID = appt.userID ?? User.shared.userID ?? ""
             self.name = appt.name ?? ""
             self.phone = appt.phone ?? ""
-            self.package = appt.package ?? selectedPackage
+            self.package = appt.package ?? menu?.detailPackages?.first
             self.addOns = appt.addOns ?? []
             self.date = appt.date ?? Date() + .day
             self.timeOfDay = TimeOfDay(rawValue: appt.timeOfDay ?? "")

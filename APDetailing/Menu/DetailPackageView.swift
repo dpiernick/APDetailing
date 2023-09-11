@@ -107,6 +107,6 @@ struct DetailPackageView: View {
 
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailPackageView(package: DetailPackage.inOutDetailPackage, basicServices: BasicServices(exteriorServices: ["test 1"], interiorServices: ["test 2"]))
+        DetailPackageView(package: DetailPackage.fullDetailPackage, basicServices: BasicServices(exteriorServices: ["test 1"], interiorServices: ["test 2"]))
     }
 }

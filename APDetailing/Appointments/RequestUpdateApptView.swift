@@ -20,7 +20,7 @@ struct RequestUpdateApptView: View {
     @State var isLocationFocused: Bool = false
     var spacing: CGFloat = 10
     
-    init(appt: Appointment? = nil, selectedPackage: DetailPackage = .fullDetailPackage, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
         _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, menu: menu, isEditing: isEditing, completion: completion))
     }
     

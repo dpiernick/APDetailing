@@ -17,7 +17,7 @@ struct MenuView: View {
         }
     }
     
-    var selectedPackage: DetailPackage { menu.detailPackages?.filter({ $0.id == selectedTab }).first ??  .inOutDetailPackage }
+    var selectedPackage: DetailPackage { menu.detailPackages?.filter({ $0.id == selectedTab }).first ??  .fullDetailPackage }
     
     var body: some View {
         TabView(selection: $selectedTab) {
