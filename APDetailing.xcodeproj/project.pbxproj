@@ -10,7 +10,6 @@
 		5514FEF0297743E500A95E77 /* RequestUpdateApptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */; };
 		5514FEF2297883BC00A95E77 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF1297883BC00A95E77 /* String+Extensions.swift */; };
 		5514FEF62988CEC000A95E77 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5514FEF52988CEC000A95E77 /* Networking.swift */; };
-		553A4F002A00AF15008E87F7 /* TimeOfDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */; };
 		5540C7D029F70D1F00463625 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7CF29F70D1F00463625 /* FirebaseFunctions */; };
 		5540C7D229F70D2700463625 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5540C7D129F70D2700463625 /* FirebaseMessaging */; };
 		5540C7D429F71D4E00463625 /* Networking+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5540C7D329F71D4E00463625 /* Networking+Admin.swift */; };
@@ -37,6 +36,8 @@
 		55AF3B98290A7FA100DE2C79 /* DetailPackagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */; };
 		55C1D6FC29F9156300221C16 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D6FB29F9156300221C16 /* ContentViewModel.swift */; };
 		55C1D6FE29F994FA00221C16 /* AddOnChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D6FD29F994FA00221C16 /* AddOnChecklist.swift */; };
+		55CBF93C2BC655E400E7387B /* AppointmentDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF93B2BC655E400E7387B /* AppointmentDatePicker.swift */; };
+		55CBF9412BC67CCC00E7387B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CBF9402BC67CCC00E7387B /* View+Extensions.swift */; };
 		55D153B2290A517B00860720 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D153B1290A517B00860720 /* RoundedButton.swift */; };
 		55D153B4290A5A3900860720 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D153B3290A5A3900860720 /* ContainerView.swift */; };
 		55D3C76E299868B30073379C /* AppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3C76D299868B30073379C /* AppointmentModel.swift */; };
@@ -53,6 +54,7 @@
 		55E0C04A29773C4D008FB508 /* MessageUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0C04929773C4D008FB508 /* MessageUIView.swift */; };
 		55E4560C29F8D72B00D703A8 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */; };
 		55ECBB832A05832C00E1DCBC /* AddOnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ECBB822A05832C00E1DCBC /* AddOnsView.swift */; };
+		55F76CC42AEA42EF00F291F4 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F76CC32AEA42EF00F291F4 /* Date+Extensions.swift */; };
 		55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68429A3429300DB812D /* Networking+Appointments.swift */; };
 		55FFB68729A342D000DB812D /* Networking+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68629A342D000DB812D /* Networking+Login.swift */; };
 		55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */; };
@@ -64,7 +66,6 @@
 		5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUpdateApptViewModel.swift; sourceTree = "<group>"; };
 		5514FEF1297883BC00A95E77 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		5514FEF52988CEC000A95E77 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayPicker.swift; sourceTree = "<group>"; };
 		5540C7D329F71D4E00463625 /* Networking+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Admin.swift"; sourceTree = "<group>"; };
 		5542B2D229AD61BD0080B220 /* AppointmentCellDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCellDetailViewModel.swift; sourceTree = "<group>"; };
 		5542B2D429AD6DFF0080B220 /* AppointmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewModel.swift; sourceTree = "<group>"; };
@@ -92,6 +93,8 @@
 		55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPackagePicker.swift; sourceTree = "<group>"; };
 		55C1D6FB29F9156300221C16 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		55C1D6FD29F994FA00221C16 /* AddOnChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnChecklist.swift; sourceTree = "<group>"; };
+		55CBF93B2BC655E400E7387B /* AppointmentDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDatePicker.swift; sourceTree = "<group>"; };
+		55CBF9402BC67CCC00E7387B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		55D153B1290A517B00860720 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		55D153B3290A5A3900860720 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		55D3C76D299868B30073379C /* AppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentModel.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		55E0C04929773C4D008FB508 /* MessageUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIView.swift; sourceTree = "<group>"; };
 		55E4560B29F8D72B00D703A8 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
 		55ECBB822A05832C00E1DCBC /* AddOnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsView.swift; sourceTree = "<group>"; };
+		55F76CC32AEA42EF00F291F4 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		55FFB68429A3429300DB812D /* Networking+Appointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Appointments.swift"; sourceTree = "<group>"; };
 		55FFB68629A342D000DB812D /* Networking+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Networking+Login.swift"; sourceTree = "<group>"; };
 		55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSuggestionTextField.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				5514FEF1297883BC00A95E77 /* String+Extensions.swift */,
 				55D3C77B29989FB60073379C /* Codable+Extensions.swift */,
 				558CBF5C2AAEBBE700714351 /* Optional+Extensions.swift */,
+				55F76CC32AEA42EF00F291F4 /* Date+Extensions.swift */,
+				55CBF9402BC67CCC00E7387B /* View+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -219,11 +225,12 @@
 		55AF3B9B290A800700DE2C79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */,
 				55D153B1290A517B00860720 /* RoundedButton.swift */,
 				55D153B3290A5A3900860720 /* ContainerView.swift */,
 				55FFB68E29A6CCA900DB812D /* LocationSuggestionTextField.swift */,
 				5542B2E329AE0B250080B220 /* CustomTextField.swift */,
-				553A4EFF2A00AF15008E87F7 /* TimeOfDayPicker.swift */,
+				55CBF93B2BC655E400E7387B /* AppointmentDatePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,7 +269,6 @@
 				5542B2D229AD61BD0080B220 /* AppointmentCellDetailViewModel.swift */,
 				558D3CFC28FF28520068977A /* RequestUpdateApptView.swift */,
 				5514FEEF297743E500A95E77 /* RequestUpdateApptViewModel.swift */,
-				55AF3B97290A7FA100DE2C79 /* DetailPackagePicker.swift */,
 				55C1D6FD29F994FA00221C16 /* AddOnChecklist.swift */,
 			);
 			path = Appointments;
@@ -314,7 +320,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					558D3CEA28FF26700068977A = {
 						CreatedOnToolsVersion = 14.0;
@@ -371,7 +377,6 @@
 				55FFB68F29A6CCA900DB812D /* LocationSuggestionTextField.swift in Sources */,
 				55FFB69329A73D6200DB812D /* Networking+Menu.swift in Sources */,
 				55D153B4290A5A3900860720 /* ContainerView.swift in Sources */,
-				553A4F002A00AF15008E87F7 /* TimeOfDayPicker.swift in Sources */,
 				5542B2E229ADF65A0080B220 /* WebHelper.swift in Sources */,
 				558D3D0128FF28A70068977A /* DetailPackageView.swift in Sources */,
 				55D3C7812998AAA10073379C /* AppointmentsView.swift in Sources */,
@@ -382,6 +387,7 @@
 				5514FEF62988CEC000A95E77 /* Networking.swift in Sources */,
 				558D3CF128FF26700068977A /* ContentView.swift in Sources */,
 				55D3C7872998C4D70073379C /* User.swift in Sources */,
+				55CBF9412BC67CCC00E7387B /* View+Extensions.swift in Sources */,
 				5542B2D729AD794F0080B220 /* LogoutDeleteAcctView.swift in Sources */,
 				55FFB69129A73C5000DB812D /* MenuViewModel.swift in Sources */,
 				5542B2DE29ADE60E0080B220 /* ContactViewModel.swift in Sources */,
@@ -392,6 +398,7 @@
 				55C1D6FE29F994FA00221C16 /* AddOnChecklist.swift in Sources */,
 				55FFB68729A342D000DB812D /* Networking+Login.swift in Sources */,
 				5542B2E029ADF4AA0080B220 /* DetailMenu.swift in Sources */,
+				55F76CC42AEA42EF00F291F4 /* Date+Extensions.swift in Sources */,
 				55FFB68529A3429300DB812D /* Networking+Appointments.swift in Sources */,
 				55D3C77C29989FB60073379C /* Codable+Extensions.swift in Sources */,
 				55E0C04829773702008FB508 /* MessageViewController.swift in Sources */,
@@ -404,6 +411,7 @@
 				558D3CEF28FF26700068977A /* APDetailingApp.swift in Sources */,
 				5542B2D329AD61BD0080B220 /* AppointmentCellDetailViewModel.swift in Sources */,
 				558D3CFF28FF287A0068977A /* TimeInterval+Extensions.swift in Sources */,
+				55CBF93C2BC655E400E7387B /* AppointmentDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +454,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -506,6 +515,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -625,7 +635,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

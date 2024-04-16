@@ -14,7 +14,7 @@ struct AddOnsView: View {
         ZStack {
             Color(.black)
             VStack(alignment: .leading) {
-                Text("Individual Services")
+                Text("INDIVIDUAL")
                     .foregroundColor(.white)
                     .font(.system(size: 36, weight: .heavy, design: .default))
                     .frame(maxWidth: .infinity, alignment: .leading)

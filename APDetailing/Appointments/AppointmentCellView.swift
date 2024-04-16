@@ -24,13 +24,13 @@ struct AppointmentCellView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(appt.status?.rawValue ?? "").foregroundColor(appt.statusStringColor)
-                    Text("- \(appt.timeOfDay!)")
+                    Text("- \(appt.timeString ?? "Time: ???")")
                 }
                 Text(appt.package?.nameAndPriceString ?? "")
                     .font(.title)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                Text(appt.location!)
+                Text(appt.location ?? "???")
             }
             .padding()
         }

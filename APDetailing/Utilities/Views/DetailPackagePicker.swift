@@ -30,7 +30,7 @@ struct DetailPackagePicker: View {
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Package")
+                    Text("Package").foregroundColor(Color(white: 0.4))
                         .foregroundColor(Color(UIColor.placeholderText))
                     Text(selectedPackage?.nameAndPriceString ?? "")
                         .foregroundColor(.white)
@@ -55,8 +55,16 @@ struct DetailPackagePicker: View {
     }
 }
 
-//struct DetailPackagePicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailPackagePicker(selectedPackage: $DetailPackage.fullDetailPackage)
-//    }
-//}
+struct DetailPackagePicker_Previews_Container : View {
+    @State var package: DetailPackage? = .fullDetailPackage
+
+     var body: some View {
+         DetailPackagePicker(selectedPackage: $package)
+     }
+}
+
+struct DetailPackagePicker_Previews : PreviewProvider {
+    static var previews: some View {
+        DetailPackagePicker_Previews_Container()
+    }
+}

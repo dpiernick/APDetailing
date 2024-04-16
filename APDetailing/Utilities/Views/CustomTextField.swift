@@ -21,7 +21,7 @@ struct CustomTextField: View {
     
     var body: some View {
         ZStack {
-            TextField(title, text: $text)
+            TextField(title, text: $text, prompt: Text(title).foregroundColor(Color(white: 0.4)))
                 .padding(.init(top: 8, leading: 8, bottom: isLongForm ? 30 : 8, trailing: 8))
                 .frame(minHeight: 24)
                 .background {

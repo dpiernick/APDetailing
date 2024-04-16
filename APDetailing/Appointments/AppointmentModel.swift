@@ -15,7 +15,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var phone: String?
     var date: Date?
     var dateString: String?
-    var timeOfDay: String?
+    var timeString: String?
     var location: String?
     var carDescription: String?
     var package: DetailPackage?
@@ -54,12 +54,12 @@ struct Appointment: Codable, Identifiable, Hashable {
         guard validateAppt() else { return "" }
         return """
                Hi, I'd like to request an appointment:
-               \(dateString ?? Date.tomorrowString()) - \(timeOfDay ?? "Any Time")
+               \(dateString ?? Date.tomorrowDateString()) - \(timeString ?? "Any Time")
                \(name ?? "") - \(phone ?? "")
                \(location ?? "")
                \(package?.nameAndPriceString ?? "")
                \((addOns ?? [AddOn]()).compactMap({ $0.name }).joined())
-               \(carDescription!)
+               \(carDescription ?? "No car description")
                """
     }
 }
@@ -72,6 +72,6 @@ enum AppointmentStatus: String, Codable {
 }
 
 extension Appointment {
-    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .fullDetailPackage, addOns: [AddOn(name: "Add On 1", price: 50), AddOn(name: "Add On 2", price: 50)], status: .requested)
-    static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeOfDay: "Morning", location: "Somewhere", carDescription: "A car", package: .fullDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .completed)
+    static let mockApptRequested = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeString: "11:30 AM", location: "Somewhere", carDescription: "A car", package: .fullDetailPackage, addOns: [AddOn(name: "Add On 1", price: 50), AddOn(name: "Add On 2", price: 50)], status: .requested)
+    static let mockApptCompleted = Appointment(id: nil, userID: "3135551212", name: "Dave", phone: "3134028121", date: Date(), timeString: "11:30 AM", location: "Somewhere", carDescription: "A car", package: .fullDetailPackage, addOns: [AddOn(name: "Add On", price: 50)], status: .completed)
 }

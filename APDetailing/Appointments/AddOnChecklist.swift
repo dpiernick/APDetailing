@@ -21,7 +21,7 @@ struct AddOnChecklist: View {
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Add Ons")
+                    Text("Add Ons").foregroundColor(Color(white: 0.4))
                         .foregroundColor(Color(UIColor.placeholderText))
                     
                     HStack {
@@ -117,7 +117,7 @@ struct AddOnChecklist_Previews: PreviewProvider {
     
     // nested OTHER VIEW providing the one value for binding makes the trick
     struct OtherView : View {
-        @State var addOns = [AddOn(name: "test", price: 123), AddOn(name: "asdfasdf", price: 654), AddOn(name: "asdfasdf", price: 654)]
+        @State var addOns = [AddOn(name: "test", price: 123), AddOn(name: "asdfasdf", price: 654), AddOn(name: "hi hi hi", price: 324)]
         var body: some View {
             AddOnChecklist(selectedAddOns: $addOns)
         }

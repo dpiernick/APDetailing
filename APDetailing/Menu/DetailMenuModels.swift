@@ -17,6 +17,7 @@ struct DetailPackage: Codable, Hashable, Identifiable {
     var id: Int?
     var name: String?
     var price: Int?
+    var price2: Int?
     var exteriorServices: [String]?
     var interiorServices: [String]?
     
@@ -34,8 +35,9 @@ struct DetailPackage: Codable, Hashable, Identifiable {
                        "Exclusive - $490"]
     
     static let fullDetailPackage = DetailPackage(id: 3,
-                                                 name: "Full Detail",
+                                                 name: "Full",
                                                  price: 225,
+                                                 price2: 265,
                                                  exteriorServices: ["Foam Cannon Wash", "Complete Wax & Clear Coat Sealant", "Wheels Polished", "Tires Shined", "Engine Detailed", "Undercarriage Steam Cleaned"],
                                                  interiorServices: ["Glass Cleaned", "Door Jambs, Panels & Dash Wiped", "Deep Vacuum", "Leather Conditioned", "Carpets & Seats Shampoo'd"])
 }

@@ -17,11 +17,29 @@ struct DetailPackageView: View {
         ZStack {
             Color(.black)
             VStack(alignment: .leading) {
-                Text(package.nameAndPriceString ?? "")
+                
+                if package.price2.isNotNil(), let price = package.price, let price2 = package.price2 {
+                    HStack(spacing: 10) {
+                        Text(package.name?.uppercased() ?? "")
+                            .font(.system(size: 40, weight: .heavy, design: .default))
+                        VStack(alignment: .leading) {
+                            Text("CAR/CROSSOVER - $\(price)")
+                            Text("SUV/TRUCK - $\(price2)")
+                        }
+                        .font(.system(size: 18, weight: .heavy, design: .default))
+                    }
                     .foregroundColor(.white)
-                    .font(.system(size: 36, weight: .heavy, design: .default))
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 2)
+                } else {
+                    Text(package.nameAndPriceString?.uppercased() ?? "")
+                        .foregroundColor(.white)
+                        .font(.system(size: 36, weight: .heavy, design: .default))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 2)
+                }
+                
+                
+
                 ScrollView {
                     VStack(alignment: .leading) {
                         Text("EXTERIOR")
@@ -86,14 +104,6 @@ struct DetailPackageView: View {
                             }
                         }
                         .padding(.vertical, 1)
-                                                
-                        Text("Note: Pricing may vary based on vehicle condition.")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                            .italic()
-                            .padding(.top, 40)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .center)
                         
                         Spacer()
                     }

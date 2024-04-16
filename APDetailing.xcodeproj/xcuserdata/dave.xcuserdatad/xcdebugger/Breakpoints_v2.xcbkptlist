@@ -30,6 +30,38 @@
             endingLineNumber = "62"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "909DF4BD-FCC1-4AF6-A4C4-BAA9098F34FA - af848b2eee3520f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.AppDelegate.application(_: __C.UIApplication, open: Foundation.URL, options: Swift.Dictionary&lt;__C.UIApplicationOpenURLOptionsKey, Any&gt;) -&gt; Swift.Bool"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/APDetailingApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  uuid = "909DF4BD-FCC1-4AF6-A4C4-BAA9098F34FA - af848b2eee3520f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.AppDelegate.application(_: __C.UIApplication, open: Foundation.URL, options: Swift.Dictionary&lt;__C.UIApplicationOpenURLOptionsKey, Any&gt;) -&gt; Swift.Bool"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/APDetailingApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,6 +78,38 @@
             endingLineNumber = "64"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "00A9D1C8-E1F9-4811-8C03-C0C21882A27F - af848b2eee3520b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.AppDelegate.application(_: __C.UIApplication, open: Foundation.URL, options: Swift.Dictionary&lt;__C.UIApplicationOpenURLOptionsKey, Any&gt;) -&gt; Swift.Bool"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/APDetailingApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "00A9D1C8-E1F9-4811-8C03-C0C21882A27F - af848b2eee3520b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.AppDelegate.application(_: __C.UIApplication, open: Foundation.URL, options: Swift.Dictionary&lt;__C.UIApplicationOpenURLOptionsKey, Any&gt;) -&gt; Swift.Bool"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/APDetailingApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "304">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -67,62 +131,92 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F4C3E46A-8F60-4A27-9694-87D81BB3345C"
+            uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APDetailing/App/User.swift"
+            filePath = "APDetailing/Appointments/RequestUpdateApptViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "init()"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "init(appt:selectedPackage:menu:isEditing:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F4C3E46A-8F60-4A27-9694-87D81BB3345C - 23ad8f34be590340"
+                  uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A - 63fc046adedb019c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in APDetailing.User.() -&gt; APDetailing.User.init() -&gt; APDetailing.User"
+                  symbolName = "APDetailing.RequestUpdateApptViewModel.init(appt: Swift.Optional&lt;APDetailing.Appointment&gt;, selectedPackage: Swift.Optional&lt;APDetailing.DetailPackage&gt;, menu: Swift.Optional&lt;APDetailing.DetailMenuObject&gt;, isEditing: Swift.Bool, completion: Swift.Optional&lt;(Swift.Result&lt;APDetailing.Appointment, APDetailing.AppointmentError&gt;) -&gt; ()&gt;) -&gt; APDetailing.RequestUpdateApptViewModel"
                   moduleName = "APDetailing"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/User.swift"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "6376">
                </Location>
                <Location
-                  uuid = "F4C3E46A-8F60-4A27-9694-87D81BB3345C - ce9f3a8f124d214f"
+                  uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A - 63fc046adedb019c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in APDetailing.User.() -&gt; APDetailing.User.init() -&gt; APDetailing.User"
+                  symbolName = "APDetailing.RequestUpdateApptViewModel.init(appt: Swift.Optional&lt;APDetailing.Appointment&gt;, selectedPackage: Swift.Optional&lt;APDetailing.DetailPackage&gt;, menu: Swift.Optional&lt;APDetailing.DetailMenuObject&gt;, isEditing: Swift.Bool, completion: Swift.Optional&lt;(Swift.Result&lt;APDetailing.Appointment, APDetailing.AppointmentError&gt;) -&gt; ()&gt;) -&gt; APDetailing.RequestUpdateApptViewModel"
                   moduleName = "APDetailing"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/User.swift"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "6500">
                </Location>
                <Location
-                  uuid = "F4C3E46A-8F60-4A27-9694-87D81BB3345C - 605896f3fec2055"
+                  uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A - 63fc046adedb019c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in APDetailing.User.() -&gt; APDetailing.User.init() -&gt; APDetailing.User"
+                  symbolName = "APDetailing.RequestUpdateApptViewModel.init(appt: Swift.Optional&lt;APDetailing.Appointment&gt;, selectedPackage: Swift.Optional&lt;APDetailing.DetailPackage&gt;, menu: Swift.Optional&lt;APDetailing.DetailMenuObject&gt;, isEditing: Swift.Bool, completion: Swift.Optional&lt;(Swift.Result&lt;APDetailing.Appointment, APDetailing.AppointmentError&gt;) -&gt; ()&gt;) -&gt; APDetailing.RequestUpdateApptViewModel"
                   moduleName = "APDetailing"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/App/User.swift"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "6840">
+               </Location>
+               <Location
+                  uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A - 63fc046adedb019c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.RequestUpdateApptViewModel.init(appt: Swift.Optional&lt;APDetailing.Appointment&gt;, selectedPackage: Swift.Optional&lt;APDetailing.DetailPackage&gt;, menu: Swift.Optional&lt;APDetailing.DetailMenuObject&gt;, isEditing: Swift.Bool, completion: Swift.Optional&lt;(Swift.Result&lt;APDetailing.Appointment, APDetailing.AppointmentError&gt;) -&gt; ()&gt;) -&gt; APDetailing.RequestUpdateApptViewModel"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "6132">
+               </Location>
+               <Location
+                  uuid = "4A6AEE60-2DA8-4EA1-A486-10757265840A - 63fc046adedb019c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.RequestUpdateApptViewModel.init(appt: Swift.Optional&lt;APDetailing.Appointment&gt;, selectedPackage: Swift.Optional&lt;APDetailing.DetailPackage&gt;, menu: Swift.Optional&lt;APDetailing.DetailMenuObject&gt;, isEditing: Swift.Bool, completion: Swift.Optional&lt;(Swift.Result&lt;APDetailing.Appointment, APDetailing.AppointmentError&gt;) -&gt; ()&gt;) -&gt; APDetailing.RequestUpdateApptViewModel"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "5832">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -130,112 +224,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C73EB5D5-E52D-401E-8AE3-E07FC3282924"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "APDetailing/App/User.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "init()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "57D14705-BC33-4EB9-A4EB-609CEE8E7C03"
+            uuid = "8FFB75B3-9772-4BE6-8B20-6B6ED7462670"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "APDetailing/Appointments/RequestUpdateApptViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "appt"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "requestAppointment()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5CAE586-E3E3-406B-89FF-9D86A552585F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Utilities/Views/AppointmentDatePicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "init(date:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "774378D5-B982-4C94-AADB-77C703579783"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Utilities/Views/AppointmentDatePicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A1DF20B3-BC4F-4932-BC5F-7EE43D6C22AC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "APDetailing/Appointments/RequestUpdateApptViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "requestAppointment()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3D1AB3CE-D111-4DE7-937F-FD3BC6B976DA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "APDetailing/Appointments/RequestUpdateApptViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "requestAppointment()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3D1AB3CE-D111-4DE7-937F-FD3BC6B976DA - 140a2f7e67fff599"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for APDetailing.RequestUpdateApptViewModel.requestAppointment() async -&gt; ()"
-                  moduleName = "APDetailing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "3D1AB3CE-D111-4DE7-937F-FD3BC6B976DA - b1e7b482fe91fda9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for APDetailing.RequestUpdateApptViewModel.requestAppointment() async -&gt; ()"
-                  moduleName = "APDetailing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "3D1AB3CE-D111-4DE7-937F-FD3BC6B976DA - be7154b5afd43197"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for APDetailing.RequestUpdateApptViewModel.requestAppointment() async -&gt; ()"
-                  moduleName = "APDetailing"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Appointments/RequestUpdateApptViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "148">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -26,8 +26,7 @@ enum AppointmentError: Error {
     @Published var phone: String = User.shared.userID?.formatPhoneNumber() ?? ""
     @Published var package: DetailPackage?
     @Published var addOns: [AddOn] = []
-    @Published var date: Date = Date() + .day
-    @Published var timeOfDay: TimeOfDay?
+    @Published var date: Date = Date.tomorrowAt9AM()
     @Published var location: String = ""
     @Published var carDescription: String = ""
     var status: AppointmentStatus = .requested
@@ -35,7 +34,6 @@ enum AppointmentError: Error {
     var menu: DetailMenuObject? = nil
     
     @Published var invalidAppointment = false
-    @Published var isShowingTimeError = false
     @Published var isShowingLogin = false
     @Published var isShowingRequestError = false
     @Published var isShowingUpdateError = false
@@ -59,7 +57,7 @@ enum AppointmentError: Error {
                     phone: phone,
                     date: date,
                     dateString: date.formatted(date: .long, time: .omitted),
-                    timeOfDay: timeOfDay?.rawValue,
+                    timeString: date.timeString,
                     location: location,
                     carDescription: carDescription,
                     package: package,
@@ -76,13 +74,13 @@ enum AppointmentError: Error {
             self.phone = appt.phone ?? ""
             self.package = appt.package ?? menu?.detailPackages?.first
             self.addOns = appt.addOns ?? []
-            self.date = appt.date ?? Date() + .day
-            self.timeOfDay = TimeOfDay(rawValue: appt.timeOfDay ?? "")
+            self.date = appt.date ?? Date.tomorrowAt9AM()
             self.location = appt.location ?? ""
             self.carDescription = appt.carDescription ?? ""
             self.status = appt.status ?? .requested
         } else {
             self.package = selectedPackage
+            self.date = Date.tomorrowAt9AM()
         }
         self.menu = menu
         self.isEditing = isEditing
@@ -92,7 +90,12 @@ enum AppointmentError: Error {
     func handleLogin(result: LoginResult) async {
         switch result {
         case .success:
-            await requestAppointment()
+            if let userID = User.shared.userID {
+                self.userID = userID
+                await requestAppointment()
+            } else {
+                isShowingRequestError = true
+            }
         case .dismiss: isShowingLogin = false
         }
     }
@@ -100,11 +103,6 @@ enum AppointmentError: Error {
     func requestAppointment() async {
         guard appt.validateAppt() else {
             invalidAppointment = true
-            return
-        }
-        
-        guard appt.timeOfDay != nil else {
-            isShowingTimeError = true
             return
         }
         

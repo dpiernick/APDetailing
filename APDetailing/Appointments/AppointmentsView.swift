@@ -81,7 +81,7 @@ struct AppointmentsView: View {
                     }
                     
                     if viewModel.showApptDetail != nil {
-                        AppointmentCellDetailView(appt: viewModel.showApptDetail!) {
+                        AppointmentCellDetailView(appt: viewModel.showApptDetail ?? Appointment()) {
                             viewModel.showApptDetail = nil
                         }
                     }
