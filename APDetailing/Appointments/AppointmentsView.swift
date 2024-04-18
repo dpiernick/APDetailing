@@ -73,7 +73,8 @@ struct AppointmentsView: View {
                         }
                         .padding(20)
                         .sheet(isPresented: $viewModel.showingRequestAppt) {
-                            RequestUpdateApptView(menu: DetailMenu.shared.menu) { _ in
+                            RequestUpdateApptView(selectedPackage: DetailMenu.shared.menu?.detailPackages?.first,
+                                                  menu: DetailMenu.shared.menu) { _ in
                                 viewModel.showingRequestAppt = false
                             }
                         }

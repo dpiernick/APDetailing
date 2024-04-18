@@ -16,6 +16,7 @@ struct DetailMenuObject: Codable {
 struct DetailPackage: Codable, Hashable, Identifiable {
     var id: Int?
     var name: String?
+    var isSUV: Bool? = false
     var price: Int?
     var price2: Int?
     var exteriorServices: [String]?
@@ -23,7 +24,7 @@ struct DetailPackage: Codable, Hashable, Identifiable {
     
     var nameAndPriceString: String? {
         guard let name = name else { return nil }
-        if let price = price {
+        if let price = !(isSUV ?? true) ? price : price2 {
             return "\(name) - $\(price)"
         } else {
             return "\(name)"
@@ -38,6 +39,13 @@ struct DetailPackage: Codable, Hashable, Identifiable {
                                                  name: "Full",
                                                  price: 225,
                                                  price2: 265,
+                                                 exteriorServices: ["Foam Cannon Wash", "Complete Wax & Clear Coat Sealant", "Wheels Polished", "Tires Shined", "Engine Detailed", "Undercarriage Steam Cleaned"],
+                                                 interiorServices: ["Glass Cleaned", "Door Jambs, Panels & Dash Wiped", "Deep Vacuum", "Leather Conditioned", "Carpets & Seats Shampoo'd"])
+    
+    static let otherDetailPackage = DetailPackage(id: 4,
+                                                 name: "other",
+                                                 price: 688,
+                                                 price2: 788,
                                                  exteriorServices: ["Foam Cannon Wash", "Complete Wax & Clear Coat Sealant", "Wheels Polished", "Tires Shined", "Engine Detailed", "Undercarriage Steam Cleaned"],
                                                  interiorServices: ["Glass Cleaned", "Door Jambs, Panels & Dash Wiped", "Deep Vacuum", "Leather Conditioned", "Carpets & Seats Shampoo'd"])
 }

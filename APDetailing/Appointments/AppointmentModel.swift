@@ -16,6 +16,7 @@ struct Appointment: Codable, Identifiable, Hashable {
     var date: Date?
     var dateString: String?
     var timeString: String?
+    var timeOfDay: String?
     var location: String?
     var carDescription: String?
     var package: DetailPackage?
@@ -25,7 +26,8 @@ struct Appointment: Codable, Identifiable, Hashable {
     var addOnsPrice: Int? { return addOns?.compactMap({ $0.price ?? 0 }).reduce(0, +) }
     
     var totalApptPrice: Int? {
-        if let packagePrice = package?.price, let addOnsPrice = addOnsPrice {
+        if let packagePrice = package?.isSUV == false ? package?.price : package?.price2,
+            let addOnsPrice = addOnsPrice {
             return packagePrice + addOnsPrice
         } else {
             return nil

@@ -10,7 +10,7 @@ exports.sendNewApptPushNotification = functions.firestore
     .onCreate(async (snap, context) => {
         
         const title = "New Appointment Request";
-        const content = snap.data().dateString + " - " + snap.data().timeOfDay
+        const content = snap.data().dateString + " - " + snap.data().timeString
         const message = {
             notification: {
                 title: title,
@@ -34,7 +34,7 @@ exports.sendApptUpdatePushNotification = functions.firestore
         
         const title = "Appointment Updated";
         const statusUpdate = change.before.data().status != change.after.data().status ? change.after.data().status + ": " : ""
-        const content = statusUpdate + change.after.data().dateString + " - " + change.after.data().timeOfDay
+        const content = statusUpdate + change.after.data().dateString + " - " + change.after.data().timeString
         const message = {
             notification: {
                 title: title,

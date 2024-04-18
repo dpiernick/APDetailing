@@ -24,7 +24,7 @@ struct AppointmentCellView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(appt.status?.rawValue ?? "").foregroundColor(appt.statusStringColor)
-                    Text("- \(appt.timeString ?? "Time: ???")")
+                    Text("- \(appt.timeString ?? appt.timeOfDay ?? "Time: ???")")
                 }
                 Text(appt.package?.nameAndPriceString ?? "")
                     .font(.title)
