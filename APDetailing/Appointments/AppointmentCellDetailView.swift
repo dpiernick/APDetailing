@@ -52,7 +52,6 @@ struct AppointmentCellDetailView: View {
                         
                         Spacer()
                         
-                        
                         if User.shared.isAdmin == true{
                             Button("Edit") {
                                 viewModel.isEditing = true
@@ -121,7 +120,6 @@ struct AppointmentCellDetailView: View {
                         }
                     }
 
-                    
                     if User.shared.isAdmin {
                         VStack(spacing: 20) {
                             RoundedButton(title: "Confirm", color: .green) {
@@ -166,7 +164,7 @@ struct AppointmentCellDetailView: View {
                         }
                 }
                 .sheet(isPresented: $viewModel.isEditing) {
-                    RequestUpdateApptView(appt: viewModel.appt, menu: DetailMenu.shared.menu, isEditing: true) { result in
+                    RequestUpdateApptView(appt: viewModel.appt, isEditing: true) { result in
                         viewModel.isEditing = false
                         if let newAppt = try? result.get() {
                             self.viewModel.appt = newAppt

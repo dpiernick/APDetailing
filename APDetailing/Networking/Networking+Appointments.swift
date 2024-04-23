@@ -11,21 +11,21 @@ import Firebase
 extension Networking {
     
     static func fetchAppointments() async -> AppointmentError? {
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         
-        let error: AppointmentError?
-        if User.shared.isAdmin {
+        var error: AppointmentError?
+        if await User.shared.isAdmin {
             error = await fetchAllAppointments()
         } else {
             error = await fetchUserAppointments()
         }
         
-        shared.isShowingLoadingIndicator = false
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
         return error
     }
     
     private static func fetchUserAppointments() async -> AppointmentError? {
-        guard let userID = User.shared.userID else { return .fetchError }
+        guard let userID = await User.shared.userID else { return .fetchError }
         guard let snapshot = try? await Firestore.firestore().collection("Appointments").whereField("userID", isEqualTo: userID).order(by: "date").getDocuments() else { return .fetchError }
 
         var appts = [Appointment]()
@@ -62,13 +62,13 @@ extension Networking {
             return .submitError }
         
         var appt = appt
-        if let userID = User.shared.userID {
+        if let userID = await User.shared.userID {
             appt.userID = userID
         } else {
             return .submitError
         }
 
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).setData(data) else {
             return .submitError
         }
@@ -76,7 +76,7 @@ extension Networking {
         guard (await fetchAppointments()) == nil else {
             return .fetchError
         }
-        shared.isShowingLoadingIndicator = false
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
 
         return nil
     }
@@ -84,25 +84,25 @@ extension Networking {
     static func updateAppointment(appt: Appointment) async -> AppointmentError? {
         guard let json = appt.jsonDictionary else { return .updateError }
         
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(appt.id ?? UUID().uuidString).updateData(json) else { return .submitError }
         guard (await fetchAppointments()) == nil else { return .fetchError }
-        shared.isShowingLoadingIndicator = false
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
         
         return nil
     }
     
     static func updateAppointmentStatus(apptID: String, status: AppointmentStatus) async -> AppointmentError? {
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         guard let _ = try? await Firestore.firestore().collection("Appointments").document(apptID).updateData(["status": status.rawValue]) else { return .submitError }
         guard (await fetchAppointments()) == nil else { return .fetchError }
-        shared.isShowingLoadingIndicator = false
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
         
         return nil
     }
     
     static func deleteAllAppointments() async -> NetworkingError? {
-        guard let userID = User.shared.userID, User.shared.isAdmin == false else { return .adminDelete }
+        guard let userID = await User.shared.userID, await User.shared.isAdmin == false else { return .adminDelete }
         guard let query = try? await Firestore.firestore().collection("Appointments").whereField("userID", isEqualTo: userID).getDocuments() else { return nil }
         
         var apptIDs = [String]()

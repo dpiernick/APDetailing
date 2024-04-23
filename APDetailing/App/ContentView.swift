@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var user = User.shared
-    @ObservedObject var networking = Networking.shared
+    @ObservedObject var loadingHelper = LoadingViewHelper.shared
     @ObservedObject var menu = DetailMenu.shared
     @ObservedObject var deepLinkRouter = DeepLinkRouter.shared
     @StateObject var viewModel = ContentViewModel()
@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color(.black).ignoresSafeArea()
-            if menu.showingLaunchScreen {
+            if loadingHelper.isShowingLaunchScreen {
                 Image("APDetailingLogo")
                     .resizable()
                     .scaledToFit()
@@ -27,7 +27,7 @@ struct ContentView: View {
                         Image("APDetailingLogo")
                             .resizable()
                             .scaledToFit()
-                        .frame(width: 200, alignment: .center)
+                            .frame(width: 200, alignment: .center)
                         
                         if user.isLoggedIn {
                             Button {
@@ -66,7 +66,7 @@ struct ContentView: View {
                     }
                 }
                 .overlay(content: {
-                    if networking.isShowingLoadingIndicator {
+                    if loadingHelper.isShowingLoadingIndicator {
                         ZStack {
                             Color.black.opacity(0.9)
                             ProgressView()

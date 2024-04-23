@@ -26,12 +26,10 @@ struct Appointment: Codable, Identifiable, Hashable {
     var addOnsPrice: Int? { return addOns?.compactMap({ $0.price ?? 0 }).reduce(0, +) }
     
     var totalApptPrice: Int? {
-        if let packagePrice = package?.isSUV == false ? package?.price : package?.price2,
-            let addOnsPrice = addOnsPrice {
-            return packagePrice + addOnsPrice
-        } else {
-            return nil
-        }
+        let packagePrice = package?.price ?? 0
+        let suvPrice = package?.isSUV == true ? 40 : 0
+        let addOnsPrice = addOnsPrice ?? 0
+        return packagePrice + suvPrice + addOnsPrice
     }
     
     var statusStringColor: Color {

@@ -75,7 +75,7 @@ struct ContactView: View {
             }
             .padding([.bottom, .leading, .trailing], 20)
             .sheet(isPresented: $viewModel.showingRequestAppt) {
-                RequestUpdateApptView(menu: DetailMenu.shared.menu) {_ in }
+                RequestUpdateApptView() {_ in }
             }
         }
     }

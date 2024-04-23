@@ -9,22 +9,28 @@ import Foundation
 
 @MainActor class DetailMenu: ObservableObject {
     static let shared = DetailMenu()
-    @Published var menu: DetailMenuObject?
-    @Published var showingLaunchScreen = false
+    @Published var menu: DetailMenuObject = .defaultMenu
     
-    private init() {
-        Task { await Networking.fetchMenu() }
+    private init() {}
+    
+    func fetchMenu() {
+        Task {
+            if let menu = await Networking.fetchMenu() {
+                self.menu = menu
+                LoadingViewHelper.shared.isShowingLaunchScreen = false
+            }
+        }
     }
     
     var detailPackages: [DetailPackage]? {
-        return menu?.detailPackages
+        return menu.detailPackages
     }
     
     var addOns: [AddOn]? {
-        return menu?.addOns
+        return menu.addOns
     }
     
     var basicServices: BasicServices? {
-        return menu?.basicServices
+        return menu.basicServices
     }
 }

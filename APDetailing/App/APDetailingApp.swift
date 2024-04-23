@@ -17,6 +17,7 @@ import UIKit
 struct APDetailingApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @ObservedObject var loadingHelper = LoadingViewHelper.shared
     
     init() {
         UITableView.appearance().backgroundColor = .clear
@@ -30,6 +31,14 @@ struct APDetailingApp: App {
     }
 }
 
+@MainActor class LoadingViewHelper: ObservableObject {
+    static var shared = LoadingViewHelper()
+    @Published var isShowingLaunchScreen = true
+    @Published var isShowingLoadingIndicator = false
+    
+    private init() {}
+}
+
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -40,7 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         
-        Task { async let _ = await Networking.getAdminInfo() }
+        Task { DetailMenu.shared.fetchMenu() }
+        Task {
+            await Networking.getAdminInfo()
+            User.shared.login()
+        }
         
         return true
     }

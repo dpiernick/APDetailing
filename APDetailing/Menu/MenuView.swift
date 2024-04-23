@@ -38,7 +38,7 @@ struct MenuView: View {
             }
             .padding([.bottom, .leading, .trailing], 20)
             .sheet(isPresented: $viewModel.showingRequestAppt) {
-                RequestUpdateApptView(selectedPackage: selectedPackage, menu: DetailMenu.shared.menu) { _ in
+                RequestUpdateApptView(selectedPackage: selectedPackage) { _ in
                     viewModel.showingRequestAppt = false
                 }
             }

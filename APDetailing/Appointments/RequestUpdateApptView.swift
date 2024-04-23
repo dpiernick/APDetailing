@@ -15,8 +15,8 @@ struct RequestUpdateApptView: View {
     @State var isLocationFocused: Bool = false
     var spacing: CGFloat = 10
     
-    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, menu: DetailMenuObject? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
-        _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, menu: menu, isEditing: isEditing, completion: completion))
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, isEditing: Bool = false, _ completion: @escaping ((Result<Appointment, AppointmentError>) -> Void)) {
+        _viewModel = StateObject(wrappedValue: RequestUpdateApptViewModel(appt: appt, selectedPackage: selectedPackage, isEditing: isEditing, completion: completion))
     }
     
     var body: some View {
@@ -39,7 +39,7 @@ struct RequestUpdateApptView: View {
 
                                 CustomTextField("Car Description", text: $viewModel.carDescription, isLongForm: true)
                                 
-                                DetailPackagePicker(menu: viewModel.menu, selectedPackage: $viewModel.package)
+                                DetailPackagePicker(selectedPackage: $viewModel.package)
                                                             
                                 AddOnChecklist(selectedAddOns: $viewModel.addOns)
                                 
@@ -73,18 +73,20 @@ struct RequestUpdateApptView: View {
                     .safeAreaInset(edge: .bottom) {
                         ZStack {
                             Color(uiColor: .systemBackground)
-                                .frame(maxWidth: .infinity, maxHeight: 100, alignment: .bottom)
+                                .frame(maxWidth: .infinity, maxHeight: 125, alignment: .bottom)
                             
                             if viewModel.isEditing {
                                 RoundedButton(title: "Update Appointment", type: .primary) {
                                     Task { await viewModel.updateAppointment() }
                                 }
                                 .padding()
+                                .padding(.bottom, 20)
                             } else {
                                 RoundedButton(title: "Request Appointment", type: .primary) {
                                     await viewModel.requestAppointment()
                                 }
                                 .padding()
+                                .padding(.bottom, 20)
                             }
                         }
                         
@@ -111,6 +113,8 @@ struct RequestUpdateApptView: View {
                     }
                 }
             }
+            .ignoresSafeArea(edges: .bottom)
+
         }
     }
 }

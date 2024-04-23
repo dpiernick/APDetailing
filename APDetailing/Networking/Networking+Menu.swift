@@ -9,29 +9,44 @@ import Foundation
 import Firebase
 
 extension Networking {
-    static func fetchMenu() async {
-        DetailMenu.shared.showingLaunchScreen = true
-        async let basicServicesDoc = try? await Firestore.firestore().collection("BasicDetailPackageServices").document("BasicServices").getDocument()
-        async let detailPackageDocs = try? await Firestore.firestore().collection("DetailPackages").getDocuments()
-        async let addOnDoc = try? await Firestore.firestore().collection("AddOns").getDocuments()
+    static func fetchMenu() async -> DetailMenuObject? {        
+
+        async let services = fetchServices()
+        async let packages = fetchPackages()
+        async let addOns = fetchAddOns()
         
-        let basicServices = BasicServices.decode(dictionary: await basicServicesDoc?.data() ?? [:])
-        
+        if let packages = await packages, let basicServices = await services, let addOns = await addOns {
+            return DetailMenuObject(detailPackages: packages, basicServices: basicServices, addOns: addOns)
+        } else {
+            return nil
+        }
+    }
+    
+    static func fetchServices() async -> BasicServices? {
+        guard let basicServicesDoc = try? await Firestore.firestore().collection("BasicDetailPackageServices")
+                                                                     .document("BasicServices").getDocument() else { return nil }
+            return BasicServices.decode(dictionary: basicServicesDoc.data() ?? [:])
+    }
+    
+    static func fetchPackages() async -> [DetailPackage]? {
+        guard let packageDoc = try? await Firestore.firestore().collection("DetailPackages").getDocuments() else { return nil }
         var detailPackages = [DetailPackage]()
-        for doc in await detailPackageDocs?.documents ?? [] {
+        for doc in packageDoc.documents {
             if let package = DetailPackage.decode(dictionary: doc.data()) {
                 detailPackages.append(package)
             }
         }
-        
+        return detailPackages
+    }
+    
+    static func fetchAddOns() async -> [AddOn]? {
+        guard let addOnDoc = try? await Firestore.firestore().collection("AddOns").getDocuments() else { return nil }
         var addOns = [AddOn]()
-        for doc in await addOnDoc?.documents ?? [] {
+        for doc in addOnDoc.documents {
             if let addOn = AddOn.decode(dictionary: doc.data()) {
                 addOns.append(addOn)
             }
         }
-                        
-        DetailMenu.shared.menu = DetailMenuObject(detailPackages: detailPackages, basicServices: basicServices, addOns: addOns)
-        DetailMenu.shared.showingLaunchScreen = false
+        return addOns
     }
 }

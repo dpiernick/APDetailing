@@ -16,21 +16,20 @@ class DetailPackagePickerViewModel: ObservableObject {
 }
 
 struct DetailPackagePicker: View {
-    var menu: DetailMenuObject?
+    var menu = DetailMenu.shared.menu
     @ObservedObject var viewModel: DetailPackagePickerViewModel
     @State var package: DetailPackage
     @State var isSUV: Bool
     
-    init(menu: DetailMenuObject? = nil, selectedPackage: Binding<DetailPackage?>) {
-        self.menu = menu
-        self._package = State(initialValue: selectedPackage.wrappedValue ?? .fullDetailPackage)
+    init(selectedPackage: Binding<DetailPackage?>) {
+        self._package = State(initialValue: selectedPackage.wrappedValue ?? menu.detailPackages?.first ?? .fullDetailPackage)
         self._isSUV = State(initialValue: selectedPackage.wrappedValue?.isSUV ?? false)
         self.viewModel = DetailPackagePickerViewModel(selectedPackage: selectedPackage)
     }
     
     var priceList: [String] {
         var list = [String]()
-        for package in menu?.detailPackages ?? [] {
+        for package in menu.detailPackages ?? [] {
             package.nameAndPriceString.map({ list.append($0) })
         }
         
@@ -41,7 +40,7 @@ struct DetailPackagePicker: View {
         VStack {
             Menu {
                 Picker("Package", selection: $package) {
-                    ForEach(menu?.detailPackages ?? [.fullDetailPackage, .otherDetailPackage], id: \.self) { package in
+                    ForEach(menu.detailPackages ?? [.fullDetailPackage, .otherDetailPackage], id: \.self) { package in
                         Text((package.nameAndPriceString) ?? "")
                     }
                 }
@@ -65,9 +64,8 @@ struct DetailPackagePicker: View {
                 }
             }
             
-            
             ContainerView {
-                if package == .fullDetailPackage {
+                if package.id == menu.detailPackages?.first?.id {
                     HStack {
                         Image(systemName: isSUV == true ? "checkmark.square.fill" : "square")
                             .resizable()
@@ -75,7 +73,7 @@ struct DetailPackagePicker: View {
                             .foregroundColor(isSUV == true ? .red : .gray)
                             .font(.system(size: 20, weight: .bold, design: .default))
                         
-                        Text("SUV/Truck")
+                        Text("SUV/Truck + $40")
                             .foregroundColor(.white)
                             .font(.title3)
                             .lineLimit(1)
@@ -83,13 +81,16 @@ struct DetailPackagePicker: View {
                         
                         Spacer()
                     }
+                    .frame(maxWidth: .infinity)
                     .onTapGesture {
                         isSUV.toggle()
+                        package.isSUV = isSUV
                         viewModel.selectedPackage?.isSUV = isSUV
                     }
                 }
             }
-            .padding(.vertical, 4)
+            .padding(.top, 8)
+            .padding(.bottom, 4)
         }
         .padding(8)
         .overlay(content: {

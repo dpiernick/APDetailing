@@ -24,11 +24,11 @@ import FirebaseFirestore
     }
     
     func fetchAppointment(_ id: String) async {
-        Networking.shared.isShowingLoadingIndicator = true
+        LoadingViewHelper.shared.isShowingLoadingIndicator = true
         guard let apptData = try? await Firestore.firestore().collection("Appointments").document(id).getDocument().data() else { return }
         var appt = Appointment.decode(dictionary: apptData)
         appt?.id = id
         deepLinkAppt = appt
-        Networking.shared.isShowingLoadingIndicator = false
+        LoadingViewHelper.shared.isShowingLoadingIndicator = false
     }
 }

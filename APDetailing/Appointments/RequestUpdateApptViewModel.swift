@@ -31,7 +31,7 @@ enum AppointmentError: Error {
     @Published var carDescription: String = ""
     var status: AppointmentStatus = .requested
     
-    var menu: DetailMenuObject? = nil
+    var menu: DetailMenuObject = DetailMenu.shared.menu
     
     @Published var invalidAppointment = false
     @Published var isShowingLogin = false
@@ -65,14 +65,14 @@ enum AppointmentError: Error {
                     status: status)
     }
     
-    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, menu: DetailMenuObject? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
+    init(appt: Appointment? = nil, selectedPackage: DetailPackage? = nil, isEditing: Bool = false, completion: ((Result<Appointment, AppointmentError>) -> Void)? = nil) {
         self.id = appt?.id ?? UUID().uuidString
         super.init()
         if let appt = appt {
             self.userID = appt.userID ?? User.shared.userID ?? ""
             self.name = appt.name ?? ""
             self.phone = appt.phone ?? ""
-            self.package = appt.package ?? menu?.detailPackages?.first
+            self.package = appt.package
             self.addOns = appt.addOns ?? []
             self.date = appt.date ?? Date.tomorrowAt9AM()
             self.location = appt.location ?? ""
@@ -82,7 +82,6 @@ enum AppointmentError: Error {
             self.package = selectedPackage
             self.date = Date.tomorrowAt9AM()
         }
-        self.menu = menu
         self.isEditing = isEditing
         self.completion = completion
     }

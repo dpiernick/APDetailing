@@ -21,7 +21,9 @@ struct Admin: Codable {
     
     static let shared = User()
 
-    private init() {
+    private init() {}
+    
+    func login() {
         if let userID = UserDefaults.standard.string(forKey: "userID") {
             Task {
                 await setIsLoggedIn(phoneNumber: userID)

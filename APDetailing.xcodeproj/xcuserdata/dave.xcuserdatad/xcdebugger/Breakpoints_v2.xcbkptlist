@@ -26,8 +26,8 @@
             filePath = "APDetailing/App/APDetailingApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
             <Locations>
@@ -74,8 +74,8 @@
             filePath = "APDetailing/App/APDetailingApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "application(_:open:options:)"
             landmarkType = "7">
             <Locations>
@@ -126,6 +126,70 @@
             endingLineNumber = "32"
             landmarkName = "submitPhoneNumber(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF7B63B4-7E19-4C66-93BF-BC562B605655"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Utilities/Views/DetailPackagePicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "priceList"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "BF7B63B4-7E19-4C66-93BF-BC562B605655 - f56c5f6e2aff3b83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APDetailing.DetailPackagePicker.priceList.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Utilities/Views/DetailPackagePicker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "708">
+               </Location>
+               <Location
+                  uuid = "BF7B63B4-7E19-4C66-93BF-BC562B605655 - 9a2aaf3eb111bae1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in APDetailing.DetailPackagePicker.priceList.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "APDetailing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dave/Dev/APDetailing/APDetailing/Utilities/Views/DetailPackagePicker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F717496-9EEF-4338-9400-912B1026B611"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "APDetailing/Utilities/Views/DetailPackagePicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

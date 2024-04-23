@@ -24,14 +24,14 @@ extension Networking {
             return .badNumber
         }
         
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         var verificationID: String?
         do {
             verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
         } catch {
             print(error)
         }
-        self.shared.isShowingLoadingIndicator = false
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
         
         UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
         return verificationID != nil ? nil : .verifyFailure
@@ -42,17 +42,17 @@ extension Networking {
             return LoginError.verifyFailure
         }
         
-        shared.isShowingLoadingIndicator = true
+        await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = true }
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
         let phoneNumber = try? (await Auth.auth().signIn(with: credential)).user.phoneNumber
         
         if let phoneNumber = phoneNumber {
-            await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)            
-            shared.isShowingLoadingIndicator = false
+            await User.shared.setIsLoggedIn(phoneNumber: phoneNumber)
+            await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
             return await fetchAppointments()
         } else {
             print("no phone number error")
-            shared.isShowingLoadingIndicator = false
+            await MainActor.run { LoadingViewHelper.shared.isShowingLoadingIndicator = false }
             return LoginError.signInError
         }
     }

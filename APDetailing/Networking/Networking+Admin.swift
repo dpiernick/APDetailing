@@ -11,8 +11,8 @@ import FirebaseMessaging
 
 extension Networking {
     static func getAdminInfo() async {
-        async let _ = await getPrimaryPhoneNumber()
-        async let _ = await getAdmins()
+        async let _ = getPrimaryPhoneNumber()
+        async let _ = getAdmins()
     }
     
     private static func getPrimaryPhoneNumber() async {
